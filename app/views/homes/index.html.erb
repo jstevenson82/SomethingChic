@@ -1,0 +1,19 @@
+<div id="gallery" class="cs_gallery">
+	
+	<% 	firstpic = true
+		@homes.each do |home| %>
+	
+		<% if firstpic == true %>
+			<a href="#" class="show">
+		<% else %>
+			<a href="#">
+		<% end %>
+		    <img src="<%= home.photo.url(:home) %>" alt="<%= home.title %>" alt="" title="" rel="<h3><%= home.title %></h3><%= home.body  %>"/>
+		</a>
+		
+		<% firstpic = false %>
+		
+	<% end %>
+	
+	<div class="caption"><div class="content"></div></div>
+</div><!-- end gallery -->

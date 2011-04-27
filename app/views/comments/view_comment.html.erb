@@ -1,0 +1,19 @@
+<div id="comments-header" class="marb10">
+	<button id="post-comments">Post a comment</button>
+	<% if @comments.count > 0 %>
+		<div id="view-comments-count">View comments (<%= @comments.count %>)</div>
+	<% end %>
+	<div class="clear"></div>
+</div>
+
+<% @comments.each do |comment| %>
+  <div class="comment clear">
+  	<% if comment.website.empty? %>
+  		<%= comment.name %> <strong>Says:</strong>
+  	<% else %>
+  		<%= link_to comment.name, comment.website %> <strong>Says:</strong>
+  	<% end %>
+    <p class="comment-body"><%= comment.comment %></p>
+    <p class="info"><%= comment.created_at.strftime("%B %d %Y at %I:%M %p") %> </p>
+  </div>
+<% end %>

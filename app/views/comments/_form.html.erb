@@ -1,0 +1,40 @@
+<div id="new-comments">
+	<div id="new-comments-header">
+		Post a comment
+	</div>
+	<%= form_for @comment, :url => { :action => :create_comment } do |f| %>
+	  <% if @comment.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+	
+	      <ul>
+	      <% @comment.errors.full_messages.each do |msg| %>
+	        <li><%= msg %></li>
+	      <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
+	
+	  <div class="field">
+	    <%= f.label :name %><br />
+	    <%= f.text_field :name %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :email %><br />
+	    <%= f.text_field :email %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :website %><br />
+	    <%= f.text_field :website %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :comment %><br />
+	    <%= f.text_area :comment %>
+	    <p id="charlimitinfo"></p>
+	  </div>
+	  <input type="hidden" name="comment[blog_id]" value="<%= @blog.id %>">
+	  <div class="actions">
+	    <%= f.submit %>
+	  </div>
+	<% end %>
+</div>

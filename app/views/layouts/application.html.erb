@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title><%= controller.controller_name %> > Cincinnati, Ohio > Something Chic</title>
+        <link rel="icon" type="image/png" href="/images/logo.png" />
+		<%= stylesheet_link_tag "master", 'widgEditor' %>
+  		<%= javascript_include_tag "jquery", "application", "widgEditor" %>
+  		<%= csrf_meta_tag %>
+    </head>
+    <body>
+        <div id="cd_home_page">
+	<div id="cd_header">
+        <%= image_tag('/images/sc_header.jpg', :id => 'banner') %>  
+        <div id="top_pag_nav">
+       		<%= link_to "About", homes_path %>  <%= link_to "Services", "#"%>  <%= link_to "A Chic Blog", blog_home_path %>  <%= link_to "Request Information", "request_information.html"%>  <%= link_to "Gallery", gallery_view_path %>
+        </div>        
+	</div>
+
+    
+    <div id="page_display_info">
+        <div class="left pad5">    
+            <div class="site_title left">somethingchic.com</div>
+            <div class="page_title left"><%= controller.controller_name %></div>   
+            <div class="clear"></div>
+        </div>
+
+
+   		<div class="clear"></div>
+    </div><!-- page_display_info -->
+    
+    <div id="cd_home_page_body">
+
+
+	<%= yield %>
+
+        <div class="clear"></div>
+	</div><!-- cd_home_page_body -->
+	
+	<div class="clear"></div>
+     <div id="bottom_page_nav" class="mar10">
+        <%= link_to "About", homes_path %> | <%= link_to "Services", "#"%> | <%= link_to "A Chic Blog", blog_home_path %> | <%= link_to "Request Information", "request_information.html"%> | <%= link_to "Gallery", gallery_view_path %>
+     </div>
+     <div class="copyright">&copy; 2010 <a href="#">Something Chic</a> All rights reserved</div> 
+</div><!-- cd_home_page -->
+
+    </body>
+</html>

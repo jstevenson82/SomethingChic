@@ -1,0 +1,32 @@
+<div id="blog-index">
+
+	<% @blogs.each do |blog| %>
+
+		<div id="blog-header">
+			<div class="blog-date">
+			  <div class='blog-month'><%= blog.created_at.strftime("%b") %></div>
+			  <div class='blog-day'><%= blog.created_at.strftime("%e") %></div>
+		  	</div>
+		  	<div class="left">
+		  		<%= link_to truncate( blog.title, :length => 37), blog, :class => "blog-title" %>
+		  	</div>
+		  	<div class="clear"></div>
+		</div><!-- End blog-header -->
+		
+		<% if blog.photo.exists? then %>
+			<%= image_tag blog.photo.url(:small), :id => "blog-image" %>
+		<% end %>
+		
+		<div id="blog-body">
+		  <%= truncate( blog.body, :length => 250 ) %>
+		  <%= link_to "read more", blog %>
+		</div>
+
+	<% end %>
+	
+	
+
+
+
+</div>
+

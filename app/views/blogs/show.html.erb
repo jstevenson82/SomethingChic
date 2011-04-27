@@ -1,0 +1,36 @@
+<div id="blogs">
+
+	<div id="blog-header">
+		<div class="blog-date">
+		  <div class='blog-month'><%= @blog.created_at.strftime("%b") %></div>
+		  <div class='blog-day'><%= @blog.created_at.strftime("%e") %></div>
+	  	</div>
+	  	<div class="left">
+	  		<% if @blog.link.empty? %>
+	  			<span class = "blog-title"><%= @blog.title %></span>
+	  		<% else %>
+	  			<%= link_to @blog.title, @blog.link, :class => "blog-title" %>
+	  		<% end %>
+	  	</div>
+	  	<div class="clear"></div>
+	</div><!-- End blog-header -->
+	
+	<% if @blog.photo.exists? then %>
+		<%= image_tag @blog.photo.url(:small), :id => "blog-image" %>
+	<% end %>
+	
+	<div id="blog-body">
+	  <%= @blog.body %>
+	</div>
+
+</div>
+
+
+<!-- image_tag('whatever.jpg') -->
+<div id="view-comments" class="clear">
+	<%= render :template => 'comments/view_comment' %>
+</div>
+
+<div id="add-comments" class="clear" style="display:none;">
+	<%= render 'comments/form' %>
+</div>
