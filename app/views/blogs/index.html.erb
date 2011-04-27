@@ -1,6 +1,7 @@
 <div id="blog-index">
 
 	<% @blogs.each do |blog| %>
+		<% @comment = Comment.find(:all, :conditions => { :blog_id, blog.id }) %>
 
 		<div id="blog-header">
 			<div class="blog-date">
@@ -9,6 +10,9 @@
 		  	</div>
 		  	<div class="left">
 		  		<%= link_to truncate( blog.title, :length => 37), blog, :class => "blog-title" %>
+		  		<% if @comment.count > 0 %>
+		  			<span class="comment-count"><%= @comment.count %> commet<% if !@comment.count.equal? 1 %>(s)<% end %></span>
+		  		<% end %>
 		  	</div>
 		  	<div class="clear"></div>
 		</div><!-- End blog-header -->

@@ -47,7 +47,8 @@ p { padding-bottom:10px; }
 #blogs, #view-comments, #blog-index { clear:both; width: 500px; } 
 #blogs a, #view-comments a, #blog-index a { text-decoration: none; color: #669999; }
 #blog-header { float:left; clear:both; margin-bottom: 15px; color:#669999; font-weight:bold; border:1px solid #669999; width:500px; }
-#blog-header .blog-title { font-size: 27px; font-weight: normal; letter-spacing: -0.03em; line-height: 1em; padding: 10px; display:block; }
+#blog-header .blog-title { font-size: 27px; font-weight: normal; letter-spacing: -0.03em; line-height: 1em; padding: 10px 10px 0; display:block; }
+#blog-header .comment-count { padding:10px 0 10px 10px; color:#000; font-weight:normal; font-size: 11px; font-family: "Trebuchet MS",Arial,Helvetica,sans-serif; }
 #blog-header .blog-date { float:left; border-right:1px solid #669999; }
 #blog-header .blog-month { font-size:15px; padding: 5px 10px 0; }
 #blog-header .blog-day { font-size:22px; padding:0 10px 5px; }
@@ -163,6 +164,24 @@ button {
 
 button:hover {
     background: #79c7eb;
+}
+
+.flash-sucess {
+	background-color:#99CC66; 
+	border:2px solid #336600; 
+	color:#336600; 
+	font-weight:bold; 
+	padding:10px; 
+	margin-bottom:10px;
+}
+
+.flash-failure {
+	background-color:#FF6666; 
+	border:2px solid #FF0000; 
+	color:#FF0000; 
+	font-weight:bold; 
+	padding:10px; 
+	margin-bottom:10px;
 }
 
 /***********************
