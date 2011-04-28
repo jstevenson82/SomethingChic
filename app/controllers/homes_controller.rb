@@ -1,6 +1,6 @@
 class HomesController < ApplicationController
 
-	layout "home"
+  layout "home"
 
   def index
     @homes = Home.all

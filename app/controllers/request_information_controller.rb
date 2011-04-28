@@ -1,5 +1,7 @@
 class RequestInformationController < ApplicationController
    
+  layout "request"
+   
   def index
       render :template => '/request_information/index'
   end

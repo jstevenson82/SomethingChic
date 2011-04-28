@@ -1,6 +1,7 @@
 class BlogsController < ApplicationController
-  # GET /blogs
-  # GET /blogs.xml
+
+  layout "blog"
+
   def index
     @blogs = Blog.all
 

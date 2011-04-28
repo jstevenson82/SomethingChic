@@ -1,4 +1,7 @@
 class GalleriesController < ApplicationController
+	
+  layout "gallery"
+	
   # GET /galleries
   # GET /galleries.xml
   def index

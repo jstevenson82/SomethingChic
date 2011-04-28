@@ -1,25 +1,32 @@
-<h1>Listing galleries</h1>
+<div id="main">
+		   	
+	<ul class="gallery clearfix">
+	<% @galleries.each do |gallery| %>
+		<li class="marb10 clear">
+			<div class="left"><a href="<%= gallery.photo.url(:lightbox) %>" rel="prettyPhoto[gallery1]" title="<%= truncate( gallery.body, :length => 150 ) %>"><img src="<%= gallery.photo.url(:thumb) %>" width="175" height="175" alt="<%= gallery.title %>" /></a></div>
+			<div class="pad10 display_block">
+				<h4><%= gallery.title %></h4>
+				<p><%= gallery.body %></p>
+			</div>
+			<div class="clear"></div>
+		</li>
+	<% end %>
+	</ul>
+			
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function(){
+			$(".gallery:first a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'dark_rounded',slideshow:5000, autoplay_slideshow: false});
+			$(".gallery:gt(0) a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'fast',slideshow:10000});
+		
+			$("#custom_content a[rel^='prettyPhoto']:first").prettyPhoto({
+				custom_markup: '<div id="map_canvas" style="width:260px; height:265px"></div>',
+				changepicturecallback: function(){ initialize(); }
+			});
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Body</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @galleries.each do |gallery| %>
-  <tr>
-    <td><%= gallery.title %></td>
-    <td><%= gallery.body %></td>
-    <td><%= link_to 'Show', gallery %></td>
-    <td><%= link_to 'Edit', edit_gallery_path(gallery) %></td>
-    <td><%= link_to 'Destroy', gallery, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Gallery', new_gallery_path %>
+			$("#custom_content a[rel^='prettyPhoto']:last").prettyPhoto({
+				custom_markup: '<div id="bsap_1259344" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div><div id="bsap_1237859" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6" style="height:260px"></div><div id="bsap_1251710" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div>',
+				changepicturecallback: function(){ _bsap.exec(); }
+			});
+		});
+	</script>
+</div>

@@ -10,8 +10,8 @@ class Gallery < ActiveRecord::Base
   #paperclip
   has_attached_file :photo,
      :styles => {
-       :thumb=> "100x100#",
-       :small  => "500x500>" 
+       :thumb  => "175x175#",
+       :lightbox  => "625x625>" 
        }
 
 end
