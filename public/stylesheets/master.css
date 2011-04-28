@@ -149,23 +149,6 @@ fieldset {
     margin-bottom: 15px;
 }
 
-button {
-    background: #404040;
-    border: solid 1px #fff;
-    border-radius: 4px;
-    color: #fff;
-    font: bold 12px "Lucida", Helvetica, Arial, Verdana, sans-serif;
-    margin: 5px 0;
-    padding: 5px;
-    width: 120px;
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
-}
-
-button:hover {
-    background: #79c7eb;
-}
-
 .flash-sucess {
 	background-color:#99CC66; 
 	border:2px solid #336600; 
@@ -259,7 +242,7 @@ input {
 	text-align:left;
 }
 
-input, select, textarea {
+input, select, textarea, button {
     background: #fff;
     border: solid 1px #9fbbcd;
     border-radius: 4px;
@@ -277,6 +260,26 @@ input[type='file'],input[type='image'],input[type='file'],input[type='hidden']
     border: 0;
     padding: 0;
 }
+
+button, input[type='submit'] {
+    background: #404040;
+    border: solid 1px #fff;
+    border-radius: 4px;
+    color: #fff;
+    font: bold 12px "Lucida", Helvetica, Arial, Verdana, sans-serif;
+    margin: 5px 0;
+    padding: 5px;
+    width: 120px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    text-align: center;
+}
+
+button:hover, input[type='submit']:hover {
+    background: #79c7eb;
+}
+
+textarea { width: 350px; height: 100px; }
 
 .field_with_errors {
   padding: 2px;

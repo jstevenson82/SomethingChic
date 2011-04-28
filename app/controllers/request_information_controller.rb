@@ -5,11 +5,12 @@ class RequestInformationController < ApplicationController
   end
    
   def sendmail  
-     request_info = params[:request] 
+     @request_info = Request.new(params[:request])
      
      respond_to do |format|  
-         RequestInformation.request_information(request_info).deliver  
-         format.html { redirect_to(:request, :notice => 'Request successfully sent!') }  
+         RequestInformation.request_information(@request_info).deliver  
+         RequestInformation.request_information_ack(@request_info).deliver  
+         format.html { redirect_to(:home, :notice => 'Request successfully sent!') }  
      end  
   end 
   

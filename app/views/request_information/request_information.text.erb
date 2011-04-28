@@ -1,9 +1,37 @@
-Hi!
+Hello,
 
-You are having one email message from <%= @email %> with a tilte 
+You have received a requset for information from <%= @request_info.name %>.
 
-<%= @title %>
-and following is the message:
-<%= @message %>
+They would like you to contact them by <%= @request_info.contactMeBy %> at 
+<% if @request_info.contactMeBy == "Email" %>
+	<%= @request_info.email %>
+<% else %>
+	<%= @request_info.phonenumber %>
+<% end %>
 
-Thanks
+There will be <%= @request_info.guests %> guest present.
+
+The type of event is <%= @request_info.eventtype %>.
+
+Expected date of the event: <%= @request_info.eventdate.to_s(:long) %>.
+
+Event location:
+<%= @request_info.address %> <%= @request_info.city %>, <%= @request_info.state %> <%= @request_info.zipcode %>
+
+<% if !@request_info.otherinfo.empty? %>
+Anything else we should know about your event?
+<%= @request_info.otherinfo %>
+<% end %>
+
+<% if !@request_info.heardaboutus.empty? %>
+How did you hear about us?
+<%= @request_info.heardaboutus %>
+<% end %>
+
+<% if !@request_info.email.empty? %>
+Email: <%= @request_info.email %>
+<% end %>
+
+Thanks,
+
+Something Chic

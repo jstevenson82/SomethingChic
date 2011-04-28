@@ -1,10 +1,95 @@
-<h1>Send Email</h1>
 <%= form_tag :action => 'sendmail' do %>
-<p><label for="request_subject">Subject</label>:
-<%= text_field 'request', 'subject' %></p>
-<p><label for="request_recipient">Recipient</label>:
-<%= text_field 'request', 'recipient' %></p>
-<p><label for="request_message">Message</label><br/>
-<%= text_area 'request', 'message' %></p>
-<%= submit_tag "Send" %>
+
+	   <fieldset>
+            <legend>What type of event do you need help with?</legend>            
+			
+            <div class="clear pad5">
+                <label for="request_eventtype_wedding_ceremony_andor_reception">Wedding Ceremony and/or Reception</label>
+                <%= radio_button 'request', 'eventtype',  'Wedding Ceremony and/or Reception' %>
+			</div>
+            
+            <div class="clear pad5">
+                <label for="request_eventtype_milestone_or_birthday">Milestone or Birthday</label>
+                <%= radio_button 'request', 'eventtype',  'Milestone or Birthday' %>
+			</div>
+            
+            <div class="clear pad5">
+                <label for="request_eventtype_other_event">Other Type</label>
+                <%= radio_button 'request', 'eventtype',  'Other Event' %>
+            </div>
+            
+        </fieldset>
+        
+        <div class="clear pad10">      	
+        	<label for="request_name" class="clear left">Name</label>
+            <%= text_field 'request', 'name', :class => "clear left",  :size => 20 %>
+        </div>
+        
+        <div class="clear pad10">
+            <label for="request_phonenumber" class="clear left">Phone Number</label>
+            <%= text_field 'request', 'phonenumber', :maxlength => 12, :class => "clear left" %>
+        </div>
+        
+        <div class="clear pad10">
+            <label for="request_email" class="clear left">E-Mail Address</label>
+            <%= email_field 'request', 'email', :class => "clear left" %>
+        </div>
+       
+       <div class="clear pad10">     	 	
+            <label for="request_guests" class="clear left">How many guests are expected?</label>
+            <%= text_field 'request', 'guests', :class => "clear left marb10", :size => 20, :maxlength => 8 %>           
+        </div>
+        
+        <div class="clear pad10">
+            <label for="request_eventdate" class="clear left">What is the date of the event?</label>
+            <div class = "clear left"><%= date_select 'request', 'eventdate', :start_year => 2011, :order => [ :day, :month, :year ] %></div>
+        </div>
+        
+        <div class="clear"></div>
+        
+        <fieldset class="clear martb10">
+            
+            <legend>Preferred method of contact</legend>   	
+			
+            <div class="clear pad5">
+                <label for="request_contactMeBy_phone">Phone</label>
+                <%= radio_button 'request', 'contactMeBy',  'Phone' %>
+			</div>
+            
+            <div class="clear pad5">
+                <label for="request_contactMeBy_email">Email</label>
+                <%= radio_button 'request', 'contactMeBy',  'Email' %>
+            </div>
+            
+        </fieldset>
+        
+        <fieldset>
+        	<legend>Event location</legend>
+            <label for="request_address" class="clear left">Address</label>
+            <%= text_field 'request', 'address', :class => "clear left marb10" %>
+            
+            <label for="request_city" class="clear left">City</label>
+            <%= text_field 'request', 'city', :class => "clear left marb10" %>
+            
+            <label for="request_state" class="clear left">State</label>
+            <%= text_field 'request', 'state', :maxlength => 2, :size => 20, :class => "clear left marb10" %>
+            
+            <label for="request_zipcode" class="clear left">Zip Code</label>
+            <%= text_field 'request', 'zipcode', :maxlength => 5, :size => 20, :class => "clear left marb10" %>
+        </fieldset>
+        
+        <div class="clear pad10">
+            <label for="request_otherinfo" class="clear left">Anything else we should know about your event?</label>
+            <%= text_area 'request', 'otherinfo', :class => "clear left", :style => "width: 350px; height: 100px" %>
+        </div>
+        
+        <div class="clear pad10">
+            <label for="request_heardaboutus" class="clear left">How did you hear about us?</label>
+            <%= text_area 'request', 'heardaboutus', :class => "clear left", :style => "width: 350px; height: 100px" %>
+        </div>
+        
+        <div class="clear pad10">
+            <%= submit_tag "Request Info",  :class => "clear" %>
+        </div>
+
 <% end %>

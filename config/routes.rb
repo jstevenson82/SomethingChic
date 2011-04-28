@@ -1,6 +1,6 @@
 Somethingchic::Application.routes.draw do
 
-  resources :blogs, :comments, :users, :user_sessions, :homes, :galleries, :emailer, :request_information
+  resources :blogs, :comments, :users, :user_sessions, :homes, :galleries, :request_information
   
   root :to => 'homes#index'
   
@@ -9,8 +9,7 @@ Somethingchic::Application.routes.draw do
   match 'blogs/:id/show' => 'blogs#show', :as => :blog_view
   match 'blogs' => 'blogs#index', :as => :blog_home
   match 'gallery' => 'galleries#index', :as => :gallery_view
-  #match 'emailer' => 'emailer#index', :as => :emailer 
-  #match 'sendmail' => 'emailer#sendmail'
+  match 'home' => 'homes#index', :as => :home
   
   match 'request_information' => 'request_information#index', :as => :request 
   match 'sendmail' => 'request_information#sendmail'

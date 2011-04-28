@@ -11,7 +11,7 @@
 		  	<div class="left">
 		  		<%= link_to truncate( blog.title, :length => 37), blog, :class => "blog-title" %>
 		  		<% if @comment.count > 0 %>
-		  			<span class="comment-count"><%= @comment.count %> commet<% if !@comment.count.equal? 1 %>(s)<% end %></span>
+		  			<span class="comment-count"><%= @comment.count %> commet<% if !@comment.count.equal? 1 %>s<% end %></span>
 		  		<% end %>
 		  	</div>
 		  	<div class="clear"></div>
