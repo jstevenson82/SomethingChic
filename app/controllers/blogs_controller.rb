@@ -4,6 +4,7 @@ class BlogsController < ApplicationController
 
   def index
     @blogs = Blog.all
+    @blogs = @blogs.paginate(:page => params[:page], :per_page => 4)
 
     respond_to do |format|
       format.html # index.html.erb

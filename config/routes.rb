@@ -8,7 +8,9 @@ Somethingchic::Application.routes.draw do
   match 'comments/:id/new_comment' => 'comments#new_comment', :as => :comment
   match 'blogs/:id/show' => 'blogs#show', :as => :blog_view
   match 'blogs' => 'blogs#index', :as => :blog_home
-  match 'gallery' => 'galleries#index', :as => :gallery_view
+  match 'galleries' => 'galleries#index', :as => :gallery_view
+  match 'galleries/:id' => 'galleries#show', :as => :picture_view
+  match 'create_gallery_comment/:id' => 'galleries#create_comment', :as => :picture_comment
   match 'home' => 'homes#index', :as => :home
   
   match 'request_information' => 'request_information#index', :as => :request 

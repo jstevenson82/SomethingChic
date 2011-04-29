@@ -24,6 +24,7 @@ a:hover { color:#999; }
 
 p { padding-bottom:10px; }
 ul, ol { list-style-type:none; }
+
 .display_block { display:block; }
 
 #banner { padding:10px 10px 0; clear:both; display:block; }
@@ -70,6 +71,9 @@ ul, ol { list-style-type:none; }
 
 #cd_home_page_body { padding:20px; width:900px; float:none; margin:0 auto; }
  
+.gallery #info { padding-left:10px; float:left; display:block; width: 650px; }
+.gallery #info a { margin-bottom:10px; font-size: 15px; font-weight: bold; color:#669999; text-decoration: none; display: block; }
+
 .twitter, .facebook { display:none !important; }
 
 .clear { clear:both; }
@@ -315,3 +319,63 @@ textarea { width: 350px; height: 100px; }
 }	
 
 #gallery .caption, #gallery .caption .content { width:820px !important; }
+
+/**##########
+pagination
+#######*/
+.pagination{
+    font-size:12px;
+    font-weight:normal;
+    text-align:center;
+    font-family: 'Trebuchet MS';
+}
+
+.pagination .disabled{
+    color:#cccccc;
+}
+
+.pagination .gap{
+    padding-left:5px;
+    padding-right:5px;
+    font-weight:bold;
+    font-size:16px;
+}
+.results h1 {
+}
+.results .searchNav{
+    padding-top:5px;
+    padding-bottom:5px;
+    padding-top:10px;
+    margin-top:10px;
+    border-top:1px solid #aaaaaa;
+    width:590px;
+}
+.pagination a{
+    border:1px solid #aaaaaa !important;
+    padding-left:6px;
+    padding-right:6px;
+    color:#666666;
+    font-weight:normal;
+    text-decoration:none;
+    padding-top:0px;
+    margin-top:0px;
+}
+
+.pagination .current{
+    padding-left:5px;
+    padding-right:5px;
+    color:#EFAB32;
+    font-weight:bold;
+}
+.pagination .start{
+    padding-left:6px;
+    padding-right:6px;
+    color:#EFAB32;
+    font-weight:bold;
+}
+
+.pagination .next_page,
+.pagination .prev_page{
+
+}
+
