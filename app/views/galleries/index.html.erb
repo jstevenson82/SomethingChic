@@ -9,11 +9,9 @@
 			<div id="info">
 				<%= link_to gallery.title, picture_view_path(gallery.id) %>
 				<p><%= gallery.body %></p>
-				<span>
-					<% if @comment.count > 0 %>
-		  				<span class="comment-count"><%= @comment.count %> commet<% if !@comment.count.equal? 1 %>s<% end %></span>
-		  			<% end %>
-		  		</span>
+				<% if @comment.count > 0 %>
+	  				<span class="comment-count"><%= @comment.count %> commet<% if !@comment.count.equal? 1 %>s<% end %></span>
+	  			<% end %>
 			</div>
 			<div class="clear"></div>
 		</li>
@@ -36,4 +34,8 @@
 			});
 		});
 	</script>
+</div>
+	
+<div id="paginate-style">
+	<%= will_paginate @galleries %>
 </div>

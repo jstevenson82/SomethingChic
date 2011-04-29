@@ -37,7 +37,7 @@ ul, ol { list-style-type:none; }
 #top_pag_nav a { background-color:#000; color:#FFF; font-weight:bold; text-decoration:none; font-size:12px; padding:5px; } 
 #top_pag_nav a:hover { color:#fff; background-color:#353F3E; }
 
-#bottom_page_nav { margin:0 auto; float:none; width:940px; border-top:1px solid #000; border-bottom:1px solid #000; text-align:center; color:#FFF; padding:5px 0; clear:both; display:block; }
+#bottom_page_nav { margin:0 auto; float:none; width:auto; border-top:1px solid #000; border-bottom:1px solid #000; text-align:center; color:#FFF; padding:5px 0; clear:both; display:block; }
 #bottom_page_nav a { color:#353F3E; font-weight:bold; text-decoration:none; font-size:10px; padding:5px; } 
 #bottom_page_nav a:hover { color:#fff; background-color:#353F3E; }
 
@@ -383,3 +383,4 @@ pagination
 
 }
 
+#paginate-style { width:900px; float:left; }

@@ -17,3 +17,6 @@
     <p class="info"><%= comment.created_at.strftime("%B %d %Y at %I:%M %p") %> </p>
   </div>
 <% end %>
+<div id="paginate-style">
+	<%= will_paginate @comments %>
+</div>

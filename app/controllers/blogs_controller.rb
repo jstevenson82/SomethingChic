@@ -17,6 +17,7 @@ class BlogsController < ApplicationController
   def show
     @blog = Blog.find(params[:id])
     @comments = Comment.find(:all, :conditions => ["blog_id=?", @blog.id ])
+    @comments = @comments.paginate(:page => params[:page], :per_page => 4)
     @comment = Comment.new
 
     respond_to do |format|
