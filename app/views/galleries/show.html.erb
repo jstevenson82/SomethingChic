@@ -1,19 +1,19 @@
-<%= image_tag @gallery.photo.url(:lightbox) %>
-
-<p>
-  <b>Title:</b>
-  <%= @gallery.title %>
-</p>
-
-<p>
-  <b>Body:</b>
-  <%= @gallery.body %>
-</p>
-
-<div id="view-comments" class="clear">
-	<%= render :partial => 'view_comments' %>
-</div>
-
-<div id="add-comments" class="clear" style="display:none;">
-	<%= render :partial => 'add_comment' %>
-</div>
+<div id="gallery-show">
+	<div class="gallery-show-title"><%= @gallery.title %></div>
+	
+	<div class="gallery-show-image-container">
+	<%= image_tag @gallery.photo.url(:lightbox), :class => "gallery-show-image" %>
+	</div>
+	
+	<div class="gallery-show-body">
+	  <%= @gallery.body %>
+	</p>
+	
+	<div id="view-comments" class="clear">
+		<%= render :partial => 'view_comments' %>
+	</div>
+	
+	<div id="add-comments" class="clear" style="display:none;">
+		<%= render :partial => 'add_comment' %>
+	</div>
+</div><!-- gallery-show -->

@@ -73,6 +73,10 @@ ul, ol { list-style-type:none; }
  
 .gallery #info { padding-left:10px; float:left; display:block; width: 650px; }
 .gallery #info a { margin-bottom:10px; font-size: 15px; font-weight: bold; color:#669999; text-decoration: none; display: block; }
+#gallery-show .gallery-show-image-container { width:900px; text-align:center; }
+#gallery-show .gallery-show-title { font-size: 27px; font-weight: normal; letter-spacing: -0.03em; line-height: 1em; padding: 10px 0; display:block; color: #669999; }
+#gallery-show .gallery-show-body { float:left; font-size:12px; clear: both; margin:10px 0; line-height: 1.6em; }
+#gallery-show .gallery-show-image { float:none; margin:0px auto; }
 
 .twitter, .facebook { display:none !important; }
 

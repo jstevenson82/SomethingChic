@@ -8,7 +8,7 @@
 		<% else %>
 			<a href="#">
 		<% end %>
-		    <img src="<%= home.photo.url(:home) %>" alt="<%= home.title %>" alt="" title="" rel="<h3><%= home.title %></h3><%= home.body  %>"/>
+		    <img src="<%= home.photo.url(:home) %>" alt="<%= home.title %>" alt="" title="" rel="<h3><%= home.title %></h3><%=truncate( home.body, :length => 300, :omission => '... (continued)' )  %>"/>
 		</a>
 		
 		<% firstpic = false %>
