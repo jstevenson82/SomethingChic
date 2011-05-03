@@ -52,7 +52,7 @@ ul, ol { list-style-type:none; }
 #blog-header { float:left; clear:both; margin-bottom: 15px; color:#669999; font-weight:bold; border:1px solid #669999; width:500px; }
 #blog-header .blog-title { font-size: 27px; font-weight: normal; letter-spacing: -0.03em; line-height: 1em; padding: 10px 10px 0; display:block; }
 #blog-header .comment-count { padding:10px 0 10px 10px; color:#000; font-weight:normal; font-size: 11px; font-family: "Trebuchet MS",Arial,Helvetica,sans-serif; }
-#blog-header .blog-date { float:left; border-right:1px solid #669999; }
+#blog-header .blog-date { float:left; border-right:1px solid #669999; text-align: center; }
 #blog-header .blog-month { font-size:15px; padding: 5px 10px 0; }
 #blog-header .blog-day { font-size:22px; padding:0 10px 5px; }
 #blog-image { float:left; margin:10px 0; clear: both; }

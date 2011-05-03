@@ -15,6 +15,12 @@ development:
   password: chic0411
   socket: /var/run/mysqld/mysqld.sock
 
+
+production:
+  adapter: mysql
+  database: p2r54838_chicDB
+  username: p2r54838_admin
+  password: nolimit
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.

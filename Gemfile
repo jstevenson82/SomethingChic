@@ -4,8 +4,11 @@ gem 'rails', '3.0.5'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
+#gem 'activerecord-mysql2spatial-adapter'
+#gem 'activesupport', '=3.0.5'
+gem 'mysql2', '< 0.3'
 
-gem 'mysql2'
+
 gem 'paperclip'
 gem 'will_paginate', '~> 3.0.beta'
 #, :git => 'http://github.com/thoughtbot/paperclip.git'

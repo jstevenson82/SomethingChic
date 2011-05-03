@@ -1,0 +1,13 @@
+<div id="gallery" class="cs_gallery">
+
+<ul>
+	
+	<% @homes.each do |home| %>
+	
+		<li><%= link_to home.title, manager_edit_home_path(home.id) %></li>
+		
+	<% end %>
+
+</ul>
+	
+</div><!-- end gallery -->

@@ -16,6 +16,15 @@ Somethingchic::Application.routes.draw do
   match 'request_information' => 'request_information#index', :as => :request 
   match 'sendmail' => 'request_information#sendmail'
 
+  # *********   Manager Section   *********
+  match 'manager/index_home' => 'manager#index_home', :as => :manager_index_home
+  match 'manager/:id/edit_home' => 'manager#edit_home', :as => :manager_edit_home
+  match 'manager/new_home' => 'manager#new_home', :as => :manager_index_home
+  match 'manager/:id/destroy_home' => 'manager#destroy_home', :as => :manager_destroy_home
+  match 'manager/update_home' => 'manager#update_home', :as => :manager_update_home
+
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
