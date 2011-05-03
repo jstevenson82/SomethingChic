@@ -113,5 +113,63 @@ class ManagerController < ApplicationController
       format.html { redirect_to(:manager_index_blog) }
     end
   end
+
+  #*******************
+  #**** Gallery ******
+  #*******************
+
+  def index_gallery
+    @galleries = Gallery.all
+    @galleries = @galleries.paginate(:page => params[:page], :per_page => 5)
+
+    respond_to do |format|
+      format.html # index.html.erb
+    end
+  end
+
+  def new_gallery
+    @gallery = Gallery.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+    end
+  end
+
+  def edit_gallery
+    @gallery = Gallery.find(params[:id])
+  end
+
+  def create_gallery
+    @gallery = Gallery.new(params[:gallery])
+
+    respond_to do |format|
+      if @gallery.save
+        format.html { redirect_to(@gallery, :notice => 'Gallery was successfully created.') }
+      else
+        format.html { render :action => "new_gallery" }
+      end
+    end
+  end
+
+  def update_gallery
+    @gallery = Gallery.find(params[:id])
+
+    respond_to do |format|
+      if @gallery.update_attributes(params[:gallery])
+        format.html { redirect_to(@gallery, :notice => 'Gallery was successfully updated.') }
+      else
+        format.html { render :action => "edit_gallery" }
+      end
+    end
+  end
+
+  def destroy_gallery
+    @gallery = Gallery.find(params[:id])
+    @gallery.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(galleries_url) }
+    end
+  end
   
 end

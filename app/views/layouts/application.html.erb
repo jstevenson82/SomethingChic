@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title><%= controller.controller_name %>  > Something Chic Party and Event Design > Cincinnati, Ohio > SCPEdesign.com</title>
+        <title>Manager  > Something Chic Party and Event Design > Cincinnati, Ohio > SCPEdesign.com</title>
         <link rel="icon" type="image/png" href="/images/logo.png" />
 		<%= stylesheet_link_tag "master", 'widgEditor' %>
   		<%= javascript_include_tag "jquery", "application", "widgEditor" %>
@@ -45,12 +45,12 @@
 		<ul style="padding-right:20px;">
 			<li><%= link_to "Manage Homepage Images", manager_index_home_path %></li>
 			<li><%= link_to "Manage Blogs", manager_index_blog_path %></li>
-			<li><%= link_to "Manage Gallery Images", "#" %></li>
+			<li><%= link_to "Manage Gallery Images", manager_index_gallery_path %></li>
 			<li><%= link_to "Manage Comments", "#" %></li>
 		</ul>
 	</div>
 	
-	<div id="manage-content" class="left" style="width:75%;">
+	<div id="manage-content" class="left" style="width:65%;">
 		<%= yield %>
 	</div>
 	

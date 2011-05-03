@@ -31,6 +31,13 @@ Somethingchic::Application.routes.draw do
   match '/manager/new_blog' => 'manager#new_blog', :as => :manager_new_blog
   match '/manager/:id/destroy_blog' => 'manager#destroy_blog', :as => :manager_destroy_blog
   
+  match '/manager/index_gallery' => 'manager#index_gallery', :as => :manager_index_gallery
+  match '/manager/:id/update_gallery' => 'manager#update_gallery', :as => :manager_update_gallery
+  match '/manager/create_gallery' => 'manager#create_gallery', :as => :manager_create_gallery
+  match '/manager/:id/edit_gallery' => 'manager#edit_gallery', :as => :manager_edit_gallery
+  match '/manager/new_gallery' => 'manager#new_gallery', :as => :manager_new_gallery
+  match '/manager/:id/destroy_gallery' => 'manager#destroy_gallery', :as => :manager_destroy_gallery
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

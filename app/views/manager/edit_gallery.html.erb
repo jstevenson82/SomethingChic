@@ -1,0 +1,31 @@
+<h1>Edit gallery image</h1>
+ 
+<%= form_for ( @gallery, :url => manager_update_home_path( @home ) ) do |f| %>
+  <% if @gallery.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@gallery.errors.count, "error") %> prohibited this gallery from being saved:</h2>
+
+      <ul>
+      <% @gallery.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br />
+    <%= f.text_area :body %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit "Update"%>
+  </div>
+<% end %>
+
+<%= link_to 'Delete', manager_destroy_gallery_path(@gallery) %> |
+<%= link_to 'Back', manager_index_gallery_path %>
