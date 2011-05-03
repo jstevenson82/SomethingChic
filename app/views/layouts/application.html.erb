@@ -33,9 +33,27 @@
     
     <div id="cd_home_page_body">
 
-	<div class="flash-sucess"><%= notice %></div>
+	<% flash.each do |key, msg| %>
+	    <%= content_tag :div, msg, :class => [key, " message"], :id => "notice_ #{key}" %>
+	    <%= content_tag :script, :type => "text/javascript" do -%>
+	        setTimeout("new Effect.Fade('notice_<%= key %>');", 15000);
+	    <% end %>
+	<% end %>
+
 		<!-- begin cd_home_page_body -->
-	<%= yield %>
+	<div id="manage-menu" class="left" style="border-right:1px solid #ccc; height:650px; margin-right:20px;">
+		<ul style="padding-right:20px;">
+			<li><%= link_to "Manage Homepage Images", manager_index_home_path %></li>
+			<li><%= link_to "Manage Blogs", manager_index_blog_path %></li>
+			<li><%= link_to "Manage Gallery Images", "#" %></li>
+			<li><%= link_to "Manage Comments", "#" %></li>
+		</ul>
+	</div>
+	
+	<div id="manage-content" class="left" style="width:75%;">
+		<%= yield %>
+	</div>
+	
 		<!-- end cd_home_page_body -->
         <div class="clear"></div>
 	</div>

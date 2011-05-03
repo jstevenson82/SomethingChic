@@ -17,14 +17,20 @@ Somethingchic::Application.routes.draw do
   match 'sendmail' => 'request_information#sendmail'
 
   # *********   Manager Section   *********
-  match 'manager/index_home' => 'manager#index_home', :as => :manager_index_home
-  match 'manager/:id/edit_home' => 'manager#edit_home', :as => :manager_edit_home
-  match 'manager/new_home' => 'manager#new_home', :as => :manager_index_home
-  match 'manager/:id/destroy_home' => 'manager#destroy_home', :as => :manager_destroy_home
-  match 'manager/update_home' => 'manager#update_home', :as => :manager_update_home
+  match '/manager/index_home' => 'manager#index_home', :as => :manager_index_home
+  match '/manager/:id/update_home' => 'manager#update_home', :as => :manager_update_home
+  match '/manager/create_home' => 'manager#create_home', :as => :manager_create_home
+  match '/manager/:id/edit_home' => 'manager#edit_home', :as => :manager_edit_home
+  match '/manager/new_home' => 'manager#new_home', :as => :manager_new_home
+  match '/manager/:id/destroy_home' => 'manager#destroy_home', :as => :manager_destroy_home
 
-
-
+  match '/manager/index_blog' => 'manager#index_blog', :as => :manager_index_blog
+  match '/manager/:id/update_blog' => 'manager#update_blog', :as => :manager_update_blog
+  match '/manager/create_blog' => 'manager#create_blog', :as => :manager_create_blog
+  match '/manager/:id/edit_blog' => 'manager#edit_blog', :as => :manager_edit_blog
+  match '/manager/new_blog' => 'manager#new_blog', :as => :manager_new_blog
+  match '/manager/:id/destroy_blog' => 'manager#destroy_blog', :as => :manager_destroy_blog
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

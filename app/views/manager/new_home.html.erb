@@ -1,5 +1,33 @@
 <h1>New home</h1>
 
-<%= render 'home_form' %>
+<%= form_for ( @home, :url => manager_create_home_path, :html => { :multipart => true } ) do |f| %>
+  <% if @home.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@home.errors.count, "error") %> prohibited this home from being saved:</h2>
 
-<%= link_to 'Back', homes_path %>
+      <ul>
+      <% @home.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br />
+    <%= f.text_area :body %>
+  </div>
+  <div class="field">
+    <%= f.label :photo %><br />
+    <%= f.file_field :photo %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Add Image" %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', manager_index_home_path %>

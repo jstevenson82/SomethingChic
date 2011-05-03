@@ -1,13 +1,18 @@
-<div id="gallery" class="cs_gallery">
+<h1>Manage Home Page Images</h1>
 
 <ul>
 	
 	<% @homes.each do |home| %>
 	
-		<li><%= link_to home.title, manager_edit_home_path(home.id) %></li>
+		<li>
+			<%= link_to home.title, manager_edit_home_path(home.id) %><br/>
+			<p><%= truncate( home.body, :length => 250 ) %></p>
+		</li>
 		
 	<% end %>
-
+	<li><%= link_to "Add new home page image", manager_new_home_path %></li>
 </ul>
-	
-</div><!-- end gallery -->
+<div id="paginate-style">
+	<%= will_paginate @homes %>
+</div>
+<div class=" class="clear""></div>

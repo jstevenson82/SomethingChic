@@ -1,0 +1,18 @@
+<h1>Manage Blogs</h1>
+
+<ul>
+	
+	<% @blogs.each do |blog| %>
+	
+		<li>
+			<%= link_to blog.title, manager_edit_blog_path(blog.id) %><br/>
+			<p><%= truncate( blog.body, :length => 350, :omission => '... (continued)' ) %></p>
+		</li>
+		
+	<% end %>
+	<li><%= link_to "Create a new blog", manager_new_blog_path %></li>
+</ul>
+<div id="paginate-style">
+	<%= will_paginate @blogs %>
+</div>
+<div class=" class="clear""></div>
