@@ -9,8 +9,6 @@ class ManagerController < ApplicationController
     end
   end
 
-  # GET /homes/new
-  # GET /homes/new.xml
   def new_home
     @home = Home.new
 
@@ -18,22 +16,20 @@ class ManagerController < ApplicationController
       format.html # new.html.erb
     end
   end
-  
-  # GET /homes/1/edit
+
   def edit_home
     @home = Home.find(params[:id])
   end
 
-  # POST /homes
-  # POST /homes.xml
   def create_home
     @home = Home.new(params[:home])
 
     respond_to do |format|
       if @home.save
-        format.html { redirect_to(:home, :notice => 'Home was successfully created.') }
+        format.html { redirect_to(:home, :notice => 'Homepage image was successfully added.') }
       else
         format.html { render :action => "new_home" }
+        flash[:error] = 'There was an error adding image.'
       end
     end
   end
@@ -43,9 +39,10 @@ class ManagerController < ApplicationController
 
     respond_to do |format|
       if @home.update_attributes(params[:home])
-        format.html { redirect_to( :manager_index_home, :notice => '<div class="flash-sucess">Image was successfully updated.</div>') }
+        format.html { redirect_to( :manager_index_home, :notice => 'Image was successfully updated.') }
       else
-        format.html { redirect_to(manager_edit_home_url(@home), :notice => '<div class="flash-failure">There was an error update image.</div>') }
+        format.html { render :action => "edit_home" }
+        flash[:error] = 'There was an error updating image.'
       end
     end
   end
@@ -55,7 +52,8 @@ class ManagerController < ApplicationController
     @home.destroy
 
     respond_to do |format|
-      format.html { redirect_to( manager_index_home_url, :notice => '<div class="flash-sucess">Image was deleted.</div>' ) }
+      format.html { redirect_to( manager_index_home_url) }
+      flash[:notice] = 'Image was successfully deleted.'
     end
   end
   
@@ -65,7 +63,6 @@ class ManagerController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @blogs }
     end
   end
 
@@ -88,7 +85,8 @@ class ManagerController < ApplicationController
       if @blog.save
         format.html { redirect_to(:manager_index_blog, :notice => 'Blog was successfully created.') }
       else
-        format.html { redirect_to(:manager_new_blog, :error => 'There was a problem creating blog entry.') }
+        format.html { render :action => "new_blog" }
+        flash[:error] = 'There was a problem creating blog entry.'
       end
     end
   end
@@ -100,7 +98,8 @@ class ManagerController < ApplicationController
       if @blog.update_attributes(params[:blog])
         format.html { redirect_to(:manager_index_blog, :notice => 'Blog was successfully updated.') }
       else
-        format.html { redirect_to(:manager_edit_blog, :error => 'There was a problem updating blog entry.') }
+        format.html { render :action => "edit_blog" }
+        flash[:error] = 'There was a problem updating blog entry.'
       end
     end
   end
@@ -111,6 +110,7 @@ class ManagerController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(:manager_index_blog) }
+      flash[:notice] = 'Blog entry was successfully deleted.'
     end
   end
 
@@ -143,10 +143,11 @@ class ManagerController < ApplicationController
     @gallery = Gallery.new(params[:gallery])
 
     respond_to do |format|
-      if @gallery.save
-        format.html { redirect_to(@gallery, :notice => 'Gallery was successfully created.') }
+      if @gallery.save 
+        format.html { redirect_to(:manager_index_gallery, :notice => 'Image was successfully add to the gallery.') }
       else
         format.html { render :action => "new_gallery" }
+        flash[:error] = 'There was an issue add image to gallery.'
       end
     end
   end
@@ -156,9 +157,10 @@ class ManagerController < ApplicationController
 
     respond_to do |format|
       if @gallery.update_attributes(params[:gallery])
-        format.html { redirect_to(@gallery, :notice => 'Gallery was successfully updated.') }
-      else
+        format.html { redirect_to(:manager_index_gallery, :notice => 'Gallery was successfully updated.') }
+      else 
         format.html { render :action => "edit_gallery" }
+        flash[:error] = 'There was an issue add image to gallery.'
       end
     end
   end
@@ -168,7 +170,8 @@ class ManagerController < ApplicationController
     @gallery.destroy
 
     respond_to do |format|
-      format.html { redirect_to(galleries_url) }
+      format.html { redirect_to(:manager_index_gallery) }
+      flash[:notice] = 'Image was successfully deleted.'
     end
   end
   

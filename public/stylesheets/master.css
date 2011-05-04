@@ -160,7 +160,7 @@ fieldset {
 }
 
 #flash{
-	font-size:12px;
+	font-size:15px;
 	text-align:center;
 }
 
@@ -185,8 +185,9 @@ flash_ajax{
 	border:2px solid #336600; 
 	color:#336600; 
 	font-weight:bold; 
-	padding:10px; 
+	padding:15px; 
 	margin-bottom:10px;
+	font-size:15px;
 }
 
 .flash-failure {
@@ -194,8 +195,9 @@ flash_ajax{
 	border:2px solid #FF0000; 
 	color:#FF0000; 
 	font-weight:bold; 
-	padding:10px; 
+	padding:15px; 
 	margin-bottom:10px;
+	font-size:15px;
 }
 
 /***********************

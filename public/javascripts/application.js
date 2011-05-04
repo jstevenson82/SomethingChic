@@ -34,12 +34,12 @@ function notify(flash_message){
 	// use Javascript timeout function to delay calling
 	// our jQuery fadeOut, and hide
 	setTimeout(function(){
-	flash_div.fadeOut(1500,
+	flash_div.fadeOut(1000,
 	function(){
 		flash_div.html("");
 		flash_div.hide()}
 		)},
-		1400);
+		5400);
 }
 
 $(function(){ // &lt;&lt;JQUERY after dom is loaded event

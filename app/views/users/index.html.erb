@@ -1,22 +1,14 @@
 <h1>Manage users</h1>
 
-<table>
-  <tr>
-    <th>Firstname</th>
-    <th>Lastname</th>
-    <th></th>
-    <th></th>
-  </tr>
+<ol>
 
 <% @users.each do |user| %>
-  <tr>
-    <td><%= user.firstname %></td>
-    <td><%= user.lastname %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Remove user', user, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+  <% name = user.lastname + ", " + user.firstname %>
+  <li><%= link_to name, edit_user_path(user) %>
+  	(<%= link_to 'Remove user', user, :confirm => 'Are you sure?', :method => :delete %>)
+  </li>
 <% end %>
-</table>
+</ol>
 
 <br />
 
