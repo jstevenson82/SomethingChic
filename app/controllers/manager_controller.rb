@@ -88,7 +88,7 @@ class ManagerController < ApplicationController
       if @blog.save
         format.html { redirect_to(:manager_index_blog, :notice => 'Blog was successfully created.') }
       else
-        format.html { redirect_to(:manager_new_blog, :notice => 'There was a problem creating blog entry.') }
+        format.html { redirect_to(:manager_new_blog, :error => 'There was a problem creating blog entry.') }
       end
     end
   end
@@ -100,7 +100,7 @@ class ManagerController < ApplicationController
       if @blog.update_attributes(params[:blog])
         format.html { redirect_to(:manager_index_blog, :notice => 'Blog was successfully updated.') }
       else
-        format.html { redirect_to(:manager_edit_blog, :notice => 'There was a problem updating blog entry.') }
+        format.html { redirect_to(:manager_edit_blog, :error => 'There was a problem updating blog entry.') }
       end
     end
   end

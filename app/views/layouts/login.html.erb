@@ -41,34 +41,14 @@
     
     <div id="cd_home_page_body">
 
-	<div id="flash" class="flash_html">
-		<% unless flash[:notice].blank? %>
-			<%= flash[:notice]%>
-		<% end %>
-		<% unless flash[:error].blank? %>
-			<%= flash[:error]%>
-		<% end %>
-	</div> 
-	
-	<% if current_user %>
-		<!-- begin cd_home_page_body -->
-		<div id="manage-menu" class="left" style="border-right:1px solid #ccc; height:650px; margin-right:20px;">
-			<ul style="padding-right:20px;">
-				<li><%= link_to "Manage Homepage Images", manager_index_home_path %></li>
-				<li><%= link_to "Manage Blogs", manager_index_blog_path %></li>
-				<li><%= link_to "Manage Gallery Images", manager_index_gallery_path %></li>
-				<li><%= link_to "Manage Comments", "#" %></li>
-				<li><%= link_to "Manage User", users_path%></li>
-			</ul>
-		</div>
-		
-		<div id="manage-content" class="left" style="width:65%;">
-			<%= yield %>
-		</div>
-	<% else %>
-		<h1>Please login to access the manage system</h1>
-	     <p>Click here to <%= link_to "login", :login %>
+	<% flash.each do |key, msg| %>
+	    <%= content_tag :div, msg, :class => [key, " message"], :id => "notice_ #{key}" %>
+	    <%= content_tag :script, :type => "text/javascript" do -%>
+	        setTimeout("new Effect.Fade('notice_<%= key %>');", 15000);
+	    <% end %>
 	<% end %>
+	
+			<%= yield %>
 	
 		<!-- end cd_home_page_body -->
         <div class="clear"></div>

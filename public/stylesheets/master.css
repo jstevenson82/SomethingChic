@@ -159,6 +159,27 @@ fieldset {
     margin-bottom: 15px;
 }
 
+#flash{
+	font-size:12px;
+	text-align:center;
+}
+
+flash_html {
+	display:inline;
+}
+
+flash_ajax{
+	display: block;
+	position:fixed;
+	bottom:0px;
+	width:100%;
+	z-index:1003;
+	color:#ccc;
+	background-color:#000;
+	padding:4px;
+
+} 
+
 .flash-sucess {
 	background-color:#99CC66; 
 	border:2px solid #336600; 

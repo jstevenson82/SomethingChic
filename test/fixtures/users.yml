@@ -3,6 +3,8 @@
 one:
   username: MyString
   email: MyString
+  firstname: MyString
+  lastname: MyString
   crypted_password: MyString
   password_salt: MyString
   persistence_token: MyString
@@ -10,6 +12,8 @@ one:
 two:
   username: MyString
   email: MyString
+  firstname: MyString
+  lastname: MyString
   crypted_password: MyString
   password_salt: MyString
   persistence_token: MyString

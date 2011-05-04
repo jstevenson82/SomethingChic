@@ -7,6 +7,7 @@ gem 'rails', '3.0.5'
 #gem 'activerecord-mysql2spatial-adapter'
 #gem 'activesupport', '=3.0.5'
 gem 'mysql2', '< 0.3'
+gem 'authlogic'
 
 
 gem 'paperclip'

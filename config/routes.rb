@@ -1,6 +1,8 @@
 Somethingchic::Application.routes.draw do
 
-  resources :blogs, :comments, :users, :user_sessions, :homes, :galleries, :request_information
+  resources :users
+
+  resources :blogs, :comments, :users, :user_sessions, :homes, :galleries, :request_information, :users, :user_sessions
   
   root :to => 'homes#index'
   
@@ -38,6 +40,8 @@ Somethingchic::Application.routes.draw do
   match '/manager/new_gallery' => 'manager#new_gallery', :as => :manager_new_gallery
   match '/manager/:id/destroy_gallery' => 'manager#destroy_gallery', :as => :manager_destroy_gallery
   
+  match 'login' => 'user_sessions#new', :as => :login
+  match 'logout' => 'user_sessions#destroy', :as => :logout
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
