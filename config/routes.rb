@@ -1,7 +1,5 @@
 Somethingchic::Application.routes.draw do
 
-  resources :users
-
   resources :blogs, :comments, :users, :user_sessions, :homes, :galleries, :request_information, :users, :user_sessions
   
   root :to => 'homes#index'
@@ -42,6 +40,7 @@ Somethingchic::Application.routes.draw do
   
   match 'login' => 'user_sessions#new', :as => :login
   match 'logout' => 'user_sessions#destroy', :as => :logout
+  match 'register' => 'users#new', :as => :register
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

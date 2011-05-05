@@ -345,6 +345,11 @@ textarea { width: 350px; height: 100px; }
   list-style: square;
 }	
 
+.field_with_errors label {
+	color:#fff;
+	font-weight: bold;
+}
+
 #gallery .caption, #gallery .caption .content { width:820px !important; }
 
 /**##########

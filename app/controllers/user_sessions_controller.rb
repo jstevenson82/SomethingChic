@@ -20,7 +20,8 @@ class UserSessionsController < ApplicationController
       if @user_session.save
         format.html { redirect_to(:users, :notice => 'Login Successful') }
       else
-        format.html { redirect_to(:new, :error => 'Login unsuccessful') }
+        format.html { redirect_to(:login) }
+        flash[:error] = 'Login unsuccessful'
       end
     end
   end

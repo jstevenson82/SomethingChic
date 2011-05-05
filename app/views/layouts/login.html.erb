@@ -5,8 +5,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Manager  > Something Chic Party and Event Design > Cincinnati, Ohio > SCPEdesign.com</title>
         <link rel="icon" type="image/png" href="/images/logo.png" />
-		<%= stylesheet_link_tag "master", 'widgEditor' %>
-  		<%= javascript_include_tag "jquery", "application", "widgEditor" %>
+		<%= stylesheet_link_tag "master" %>
+  		<%= javascript_include_tag "jquery", "application" %>
   		<%= csrf_meta_tag %>
   		<style type="text/css">
   			li { clear: both; display: block !important; margin: 2px; padding: 10px 0; }
@@ -41,12 +41,9 @@
     
     <div id="cd_home_page_body">
 
-	<% flash.each do |key, msg| %>
-	    <%= content_tag :div, msg, :class => [key, " message"], :id => "notice_ #{key}" %>
-	    <%= content_tag :script, :type => "text/javascript" do -%>
-	        setTimeout("new Effect.Fade('notice_<%= key %>');", 15000);
-	    <% end %>
-	<% end %>
+		<% unless flash[:error].blank? %>
+			<div id="flash" class="flash_html flash-failure"><%= flash[:error]%></div> 
+		<% end %>
 	
 			<%= yield %>
 	

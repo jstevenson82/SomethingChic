@@ -1,6 +1,6 @@
 <h1>Edit gallery image</h1>
  
-<%= form_for ( @gallery, :url => manager_update_gallery_path( @home ) ) do |f| %>
+<%= form_for @gallery, :url => manager_update_gallery_path( @home ) do |f| %>
   <% if @gallery.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@gallery.errors.count, "error") %> prohibited this gallery from being saved:</h2>
