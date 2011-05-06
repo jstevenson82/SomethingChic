@@ -275,7 +275,7 @@ input {
 	text-align:left;
 }
 
-input, select, textarea, button {
+input, select, textarea, #post-comments button {
     background: #fff;
     border: solid 1px #9fbbcd;
     border-radius: 4px;
@@ -294,7 +294,7 @@ input[type='file'],input[type='image'],input[type='file'],input[type='hidden']
     padding: 0;
 }
 
-button, input[type='submit'] {
+#post-comments button, input[type='submit'] {
     background: #404040;
     border: solid 1px #fff;
     border-radius: 4px;
@@ -308,11 +308,11 @@ button, input[type='submit'] {
     text-align: center;
 }
 
-button:hover, input[type='submit']:hover {
+#post-comments button:hover, input[type='submit']:hover {
     background: #79c7eb;
 }
 
-textarea { width: 350px; height: 100px; }
+textarea { width: 750px; height: 100px; }
 
 .field_with_errors {
   padding: 2px;

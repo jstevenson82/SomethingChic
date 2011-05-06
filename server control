@@ -1,0 +1,19 @@
+FTP Server hostname: ftp.scpedesign.com
+IP Address: 66.84.0.142
+FTP Username: p2r54838
+FTP Password: 96sM4f9xvLY1Y
+FTP Root directory: public_html/
+
+You can use the IP address of your account instead of the hostname if your domain is not yet pointed to our nameservers.
+
+If you have any questions as you begin to use your new web hosting account, please feel free to give us a call at 1-877-636-7480 or 1-614-458-1197 and we will be glad to assist you. Our customer service agents are available Monday through Friday, 9am to 9pm EST. You can also explore our support website, located at http://support.hostingrails.com to find additional information related to your new account.
+
+Hostingrails.com Customer Service Department
+
+how to run server in the background:
+screen -A -m -d -S somethingchic rails s -p 14110
+
+
+rm -rf .bundle && bundle install && git add Gemfile.lock && git commit -m "Added Gemfile.lock"
+
+

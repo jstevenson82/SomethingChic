@@ -5,8 +5,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Manager  > Something Chic Party and Event Design > Cincinnati, Ohio > SCPEdesign.com</title>
         <link rel="icon" type="image/png" href="/images/logo.png" />
-		<%= stylesheet_link_tag "master", 'widgEditor' %>
-  		<%= javascript_include_tag "jquery", "application", "widgEditor" %>
+		<%= stylesheet_link_tag "master" %>
+  		<%= javascript_include_tag "jquery", "manage.application" %>
+  		<script src="/javascripts/whizzywig61.js" type="text/javascript"></script>
   		<%= csrf_meta_tag %>
   		<style type="text/css">
   			li { clear: both; display: block !important; margin: 2px; padding: 10px 0; }
@@ -29,7 +30,7 @@
         
 	  	<div id="nav" class="right pad5">
 	        <% if current_user %>
-	        Welcome,<%= link_to current_user.firstname, edit_user_path(current_user.id)%> (<%= link_to "Logout", :logout%>) 	        
+	        Hello, <%= link_to current_user.firstname, edit_user_path(current_user.id)%> (<%= link_to "Logout", :logout%>) 	        
 	        <% else %>
 	        <%= link_to "Login", :login %>
 	        <% end %>

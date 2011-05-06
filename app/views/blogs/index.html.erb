@@ -22,7 +22,7 @@
 		<% end %>
 		
 		<div id="blog-body">
-		  <%= truncate( blog.body, :length => 250 ) %>
+		  <%= truncate( blog.body.gsub(/<.*?>/, "") , :length => 250 ) %>
 		  <%= link_to "read more", blog %>
 		</div>
 

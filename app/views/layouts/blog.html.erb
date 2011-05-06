@@ -31,7 +31,12 @@
             <div class="clear"></div>
         </div>
 
-
+	  	<div id="nav" class="right pad5">
+	        <% if current_user %>
+	        	Hello, <%= link_to current_user.firstname, edit_user_path(current_user.id)%> (<%= link_to "Logout", :logout%>) 	        
+	        <% end %>
+	    </div>
+	    
    		<div class="clear"></div>
     </div><!-- page_display_info -->
     

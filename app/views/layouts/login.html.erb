@@ -29,7 +29,7 @@
         
 	  	<div id="nav" class="right pad5">
 	        <% if current_user %>
-	        Welcome,<%= link_to current_user.firstname, edit_user_path(current_user.id)%> | 
+	        Hello, <%= link_to current_user.firstname, edit_user_path(current_user.id)%> | 
 	        <%= link_to "Logout", :logout%>
 	        <% else %>
 	        <%= link_to "Login", :login %>
