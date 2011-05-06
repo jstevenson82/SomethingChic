@@ -312,7 +312,7 @@ input[type='file'],input[type='image'],input[type='file'],input[type='hidden']
     background: #79c7eb;
 }
 
-textarea { width: 750px; height: 100px; }
+textarea { width: 680px; height: 100px; }
 
 .field_with_errors {
   padding: 2px;

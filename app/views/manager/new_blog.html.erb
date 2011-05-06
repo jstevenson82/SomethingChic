@@ -5,7 +5,7 @@
 </script>
 <h1>New blog</h1>
 
-<%= form_for ( @blog, :url => manager_create_blog_path, :html => { :multipart => true } ) do |f| %>
+<%= form_for  @blog, :url => manager_create_blog_path, :html => { :multipart => true }  do |f| %>
   <% if @blog.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@blog.errors.count, "error") %> prohibited this blog from being saved:</h2>
