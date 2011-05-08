@@ -26,4 +26,16 @@ class BlogsController < ApplicationController
     end
   end
 
+  def create_comment
+    @comment = Comment.new(params[:comment])
+
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to(blog_view_path(@comment.blog_id), :notice => 'Comment was successfully created.') }
+      else
+        format.html { render :action => "new" }
+      end
+    end
+  end
+
 end

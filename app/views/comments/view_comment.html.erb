@@ -13,6 +13,9 @@
   	<% else %>
   		<%= link_to comment.name, comment.website %> <strong>Says:</strong>
   	<% end %>
+  	<% if current_user %>
+  	  	<%= link_to image_tag("close-button.png", :border => 0), remove_comment_blog_path(comment.id,comment.blog_id), :border => 0, :class => "right", :method => :delete %>	
+  	<% end %>
     <p class="comment-body"><%= comment.comment %></p>
     <p class="info"><%= comment.created_at.strftime("%B %d %Y at %I:%M %p") %> </p>
   </div>

@@ -1,6 +1,5 @@
 class CommentsController < ApplicationController
-  # GET /comments
-  # GET /comments.xml
+
   def index
     @comments = Comment.all
 
@@ -10,8 +9,6 @@ class CommentsController < ApplicationController
     end
   end
 
-  # GET /comments/1
-  # GET /comments/1.xml
   def show
     @comment = Comment.find(params[:id])
 
@@ -21,8 +18,6 @@ class CommentsController < ApplicationController
     end
   end
 
-  # GET /comments/new
-  # GET /comments/new.xml
   def new
     @comment = Comment.new
 
@@ -32,52 +27,36 @@ class CommentsController < ApplicationController
     end
   end
 
-  # GET /comments/1/edit
-  def edit
-    @comment = Comment.find(params[:id])
-  end
-
-  # POST /comments
-  # POST /comments.xml
   def create
     @comment = Comment.new(params[:comment])
 
     respond_to do |format|
       if @comment.save
         format.html { redirect_to(blog_view_path(@comment.blog_id), :notice => 'Comment was successfully created.') }
-        format.xml  { render :xml => @comment, :status => :created, :location => @comment }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
       end
     end
   end
 
-  # PUT /comments/1
-  # PUT /comments/1.xml
-  def update
+  def remove_comment_blog
     @comment = Comment.find(params[:id])
-
-    respond_to do |format|
-      if @comment.update_attributes(params[:comment])
-        format.html { redirect_to(@comment, :notice => 'Comment was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /comments/1
-  # DELETE /comments/1.xml
-  def destroy
-    @comment = Comment.find(params[:id])
+    blog_id = params[:blog_id]
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to(comments_url) }
-      format.xml  { head :ok }
+      format.html { redirect_to(blog_view_url(blog_id)) }
+    end
+  end
+  
+ def remove_comment_gallery
+    @comment = Comment.find(params[:id])
+    blog_id = params[:blog_id]
+    blog_id = blog_id.to_s.gsub('1212','')
+    @comment.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(picture_view_url(blog_id)) }
     end
   end
   

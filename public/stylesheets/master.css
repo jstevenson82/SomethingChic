@@ -26,6 +26,7 @@ p { padding-bottom:10px; }
 ul, ol { list-style-type:none; }
 
 .display_block { display:block; }
+.border-no a { border:0px !important; }
 
 #banner { padding:10px 10px 0; clear:both; display:block; }
 
@@ -275,7 +276,7 @@ input {
 	text-align:left;
 }
 
-input, select, textarea, #post-comments button {
+input, select, textarea, button#post-comments {
     background: #fff;
     border: solid 1px #9fbbcd;
     border-radius: 4px;
@@ -294,7 +295,7 @@ input[type='file'],input[type='image'],input[type='file'],input[type='hidden']
     padding: 0;
 }
 
-#post-comments button, input[type='submit'] {
+button#post-comments, input[type='submit'] {
     background: #404040;
     border: solid 1px #fff;
     border-radius: 4px;
@@ -308,7 +309,7 @@ input[type='file'],input[type='image'],input[type='file'],input[type='hidden']
     text-align: center;
 }
 
-#post-comments button:hover, input[type='submit']:hover {
+button:hover#post-comments, input[type='submit']:hover {
     background: #79c7eb;
 }
 

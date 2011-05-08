@@ -41,6 +41,11 @@ Somethingchic::Application.routes.draw do
   match 'login' => 'user_sessions#new', :as => :login
   match 'logout' => 'user_sessions#destroy', :as => :logout
   match 'register' => 'users#new', :as => :register
+  
+  # *********   Comment Remove   *********
+  match 'comments/:id/remove_comment_blog/:blog_id' => 'comments#remove_comment_blog', :as => :remove_comment_blog
+  match 'comments/:id/remove_comment_gallery/:blog_id' => 'comments#remove_comment_gallery', :as => :remove_comment_gallery
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
