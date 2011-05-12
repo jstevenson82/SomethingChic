@@ -1,0 +1,22 @@
+<h1>Manage Gallery Sections</h1>
+<div id="main">
+		   	
+	<ul class="gallery clearfix">
+	<% @gallery_sections.each do |gallery| %>
+		<li class="marb10 clear">
+			<div class="left"><img src="<%= gallery.photo.url(:thumb) %>" width="175" height="175" /></div>
+			<div id="info" style="width:375px;">
+				<%= link_to gallery.title, manager_edit_gallery_sections_path(gallery.id) %>
+				<p><%= gallery.body %></p>
+			</div>
+			<div class="clear"></div>
+		</li>
+	<% end %>
+		<li><%= link_to "Create a new gallery section", manager_new_gallery_sections_path %></li>
+	</ul>
+			
+</div>
+	
+<div id="paginate-style">
+	<%= will_paginate @gallery_sections %>
+</div>

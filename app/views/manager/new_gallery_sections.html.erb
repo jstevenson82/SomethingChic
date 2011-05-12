@@ -1,0 +1,34 @@
+<h1>New gallery section</h1>
+ 
+<%= form_for @gallery_section, :url => manager_create_gallery_sections_path, :html => { :multipart => true } do |f| %>
+  <% if @gallery_section.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@gallery_section.errors.count, "error") %> prohibited this gallery_section from being saved:</h2>
+
+      <ul>
+      <% @gallery_section.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br />
+    <%= f.text_area :body %>
+  </div>
+  <div class="field">
+    <%= f.label :photo %><br />
+    <%= f.file_field :photo %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Create" %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', gallery_sections_path %>

@@ -5,8 +5,11 @@ class GalleriesController < ApplicationController
   # GET /galleries
   # GET /galleries.xml
   def index
-    @galleries = Gallery.all
-    @galleries = @galleries.paginate(:page => params[:page], :per_page => 5)
+    #@galleries = Gallery.all
+    gallery_id = params[:id]
+    @galleries = Gallery.find(:all, :conditions => "gallery_id=#{gallery_id}")
+    @gallery_section = GallerySection.find(params[:id])
+    @galleries = @galleries.paginate(:page => params[:page], :per_page => 8)
 
     respond_to do |format|
       format.html # index.html.erb

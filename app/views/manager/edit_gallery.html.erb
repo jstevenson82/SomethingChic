@@ -21,7 +21,13 @@
     <%= f.label :body %><br />
     <%= f.text_area :body %>
   </div>
-  
+   <div class="field">
+  	<select name="gallery[gallery_id]">
+  		<% @gallery_sections.each do |gallery| %>
+			<option value="<%= gallery.id %>"  <% if gallery.id == @gallery.gallery_id %>selected<% end %>><%= gallery.title %></option>
+		<% end %>
+	</select>
+  </div> 
   <div class="actions">
     <%= f.submit "Update"%>
   </div>

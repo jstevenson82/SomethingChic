@@ -1,0 +1,22 @@
+<div id="main">
+		   	
+	<ul class="gallery clearfix">
+	<% @gallery_sections.each do |gallery| %>
+		<li class="marb10 clear">
+			<div class="left"><img src="<%= gallery.photo.url(:thumb) %>" width="175" height="175" /></div>
+			<div id="info">
+				<%= link_to gallery.title, gallery_view_path(gallery.id) %>
+				<p><%= gallery.body %></p>
+				<p><strong>(<%= Gallery.count(:all, :conditions =>"gallery_id=#{gallery.id}") %>)</strong> number of photo's in gallery</p>
+			</div>
+			<div class="clear"></div>
+		</li>
+	<% end %>
+		
+	</ul>
+			
+</div>
+	
+<div id="paginate-style">
+	<%= will_paginate @gallery_sections %>
+</div>

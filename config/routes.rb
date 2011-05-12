@@ -1,5 +1,7 @@
 Somethingchic::Application.routes.draw do
 
+  resources :gallery_sections
+
   resources :blogs, :comments, :users, :user_sessions, :homes, :galleries, :request_information, :users, :user_sessions
   
   root :to => 'homes#index'
@@ -8,7 +10,8 @@ Somethingchic::Application.routes.draw do
   match 'comments/:id/new_comment' => 'comments#new_comment', :as => :comment
   match 'blogs/:id/show' => 'blogs#show', :as => :blog_view
   match 'blogs' => 'blogs#index', :as => :blog_home
-  match 'galleries' => 'galleries#index', :as => :gallery_view
+  match 'galleries/:id/index' => 'galleries#index', :as => :gallery_view
+  match 'gallery_sections' => 'gallery_sections#index', :as => :gallery_section_index
   match 'galleries/:id' => 'galleries#show', :as => :picture_view
   match 'create_gallery_comment/:id' => 'galleries#create_comment', :as => :picture_comment
   match 'home' => 'homes#index', :as => :home
@@ -37,6 +40,13 @@ Somethingchic::Application.routes.draw do
   match '/manager/:id/edit_gallery' => 'manager#edit_gallery', :as => :manager_edit_gallery
   match '/manager/new_gallery' => 'manager#new_gallery', :as => :manager_new_gallery
   match '/manager/:id/destroy_gallery' => 'manager#destroy_gallery', :as => :manager_destroy_gallery
+  
+  match '/manager/index_gallery_sections' => 'manager#index_gallery_sections', :as => :manager_index_gallery_sections
+  match '/manager/:id/update_gallery_sections' => 'manager#update_gallery_sections', :as => :manager_update_gallery_sections
+  match '/manager/create_gallery_sections' => 'manager#create_gallery_sections', :as => :manager_create_gallery_sections
+  match '/manager/:id/edit_gallery_sections' => 'manager#edit_gallery_sections', :as => :manager_edit_gallery_sections
+  match '/manager/new_gallery_sections' => 'manager#new_gallery_sections', :as => :manager_new_gallery_sections
+  match '/manager/:id/destroy_gallery_sections' => 'manager#destroy_gallery_sections', :as => :manager_destroy_gallery_sections
   
   match 'login' => 'user_sessions#new', :as => :login
   match 'logout' => 'user_sessions#destroy', :as => :logout

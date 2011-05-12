@@ -25,6 +25,13 @@
     <%= f.label :photo %><br />
     <%= f.file_field :photo %>
   </div>
+  <div class="field">
+  	<select name="gallery[gallery_id]">
+  		<% @gallery_sections.each do |gallery| %>
+			<option value="<%= gallery.id %>"><%= gallery.title %></option>
+		<% end %>
+	</select>
+  </div>
   <div class="actions">
     <%= f.submit "Add Image"%>
   </div>

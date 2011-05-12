@@ -129,6 +129,7 @@ class ManagerController < ApplicationController
 
   def new_gallery
     @gallery = Gallery.new
+    @gallery_sections = GallerySection.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -137,6 +138,7 @@ class ManagerController < ApplicationController
 
   def edit_gallery
     @gallery = Gallery.find(params[:id])
+    @gallery_sections = GallerySection.all
   end
 
   def create_gallery
@@ -172,6 +174,66 @@ class ManagerController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(:manager_index_gallery) }
       flash[:notice] = 'Image was successfully deleted.'
+    end
+  end
+
+  #*******************
+  #* Gallery Section *
+  #*******************
+
+  def index_gallery_sections
+    @gallery_sections = GallerySection.all
+    @gallery_sections = @gallery_sections.paginate(:page => params[:page], :per_page => 8)
+
+    respond_to do |format|
+      format.html # index.html.erb
+    end
+  end
+  
+  def new_gallery_sections
+    @gallery_section = GallerySection.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+    end
+  end
+
+  def edit_gallery_sections
+    @gallery_section = GallerySection.find(params[:id])
+  end
+
+  def create_gallery_sections
+    @gallery_section = GallerySection.new(params[:gallery_section])
+
+    respond_to do |format|
+      if @gallery_section.save
+        format.html { redirect_to(:manager_index_gallery_sections, :notice => 'Gallery section was successfully created.') }
+      else
+        format.html { render :action => "new_gallery_sections" }
+      end
+    end
+  end
+
+  def update_gallery_sections
+    @gallery_section = GallerySection.find(params[:id])
+
+    respond_to do |format|
+      if @gallery_section.update_attributes(params[:gallery_section])
+        format.html { redirect_to(:manager_index_gallery_sections, :notice => 'Gallery section was successfully updated.') }
+      else
+        format.html { render :action => "edit_gallery_sections" }
+        flash[:notice] = 'Gallery was successfully deleted.'
+      end
+    end
+  end
+  
+  def destroy_gallery_sections
+    @gallery_section = GallerySection.find(params[:id])
+    @gallery_section.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(:manager_index_gallery_sections) }
+      flash[:notice] = 'Gallery was successfully deleted.'
     end
   end
   
