@@ -1,18 +1,34 @@
-<h1>Manage Home Page Images</h1>
+<style>
+	#preview img { width:100%; }
+	#preview { width:500px; }
+</style>
 
-<ul>
-	
+<h1>Manage Home Page Images</h1>
+<div class="left clear marb20"><%= link_to "Add new home page image", manager_new_home_path %></div>
+
+<table cellspacing="10" width="700px">
+  <tr>
+    <th>Title</th>
+    <th>Body</th>
+    <th>Date Created</th>
+    <th></th>
+    <th></th>
+  </tr>
 	<% @homes.each do |home| %>
-	
-		<li>
-			<%= link_to home.title, manager_edit_home_path(home.id) %><br/>
-			<p><%= truncate( home.body, :length => 250 ) %></p>
-		</li>
+	<tr>
+    	<td><%= link_to home.title, home.photo.url(:home), :class =>"preview" %></td>
+    	<td><%= truncate( home.body, :length => 50 ) %></td>
+    	<td>
+    		<%= home.created_at.strftime("%B %d, %Y") %>
+    	</td>
+    	<td><%= link_to 'Edit', manager_edit_home_path(home.id) %></td>
+    	<td><%= link_to 'Delete', manager_destroy_home_path(home.id) %></td>
+    </tr>
 		
 	<% end %>
-	<li><%= link_to "Add new home page image", manager_new_home_path %></li>
-</ul>
+	
+</table>
 <div id="paginate-style">
 	<%= will_paginate @homes %>
 </div>
-<div class=" class="clear""></div>
+<div class="clear"></div>

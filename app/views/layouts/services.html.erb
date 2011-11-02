@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Chic Services > Something Chic Party and Event Design > Cincinnati, Ohio > SCPEdesign.com</title>
+        <link rel="icon" type="image/png" href="/images/logo.png" />
+		<%= stylesheet_link_tag "master" %>
+  		<%= javascript_include_tag "jquery", "application" %>
+  		<meta name="description" content="Something Chic Party and Event design. Services page, Something chic services">
+		<meta name="keywords" content="Cincinnati Ohio, Cincinnati events, Cincinnati party planning, Cincinatti, chic, Cincinnati Something Chic Party and Event design, Cincinnati Party Plannng, Event planning, Cincinnati Cater, Something Chic, Something Chic Services, Services">
+ 		<meta name="design" content="Joseph Stevenson" >
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<meta http-equiv="Content-Language" content="en-us">
+		<meta name="ROBOTS" content="ALL">
+		<meta name="Rating" content="General">
+		<meta name="revisit-after" content="5 Days">
+    </head>
+    <body>
+        <div id="sc_services_page">
+	<div id="cd_header">
+        <%= image_tag('/images/sc_header.jpg', :id => 'banner') %>  
+		<%= render :partial => 'shared/top_nav' %>        
+	</div>
+
+    
+    <div id="page_display_info">
+        <div class="left pad5">    
+            <div class="site_title left">scpedesign.com</div>
+            <div class="page_title left">Chic Services</div>   
+            <div class="clear"></div>
+        </div>
+
+	  	<div id="nav" class="right pad5">
+	        <% if current_user %>
+	        	Hello, <%= link_to current_user.firstname, edit_user_path(current_user.id)%> (<%= link_to "Logout", :logout%>) 	        
+	        <% end %>
+	    </div>
+	    
+   		<div class="clear"></div>
+    </div><!-- page_display_info -->
+    
+    <div id="sc_services">
+		<!-- begin cd_home_page_body -->
+	<%= yield %>
+		<!-- end cd_home_page_body -->
+        <div class="clear"></div>
+	</div>
+	
+	<div id="cd_rail_info">
+        <div id="category_container" class="gallery">
+			<%= render :partial => '/shared/gallery_sections' %>
+        </div><!-- ./category_container -->
+        <div id="category_container">
+			<%= render :partial => '/shared/blog_categories' %>
+        </div><!-- ./category_container -->
+	</div>
+	
+	<div class="clear"></div>
+    <%= render :partial => 'shared/bottom_nav' %>
+</div><!-- cd_home_page -->
+
+<!-- Google tracking code -->
+	<script type="text/javascript">
+	
+	 var _gaq = _gaq || [];
+	 _gaq.push(['_setAccount', 'UA-25004245-1']);
+	 _gaq.push(['_trackPageview']);
+	
+	 (function() {
+	   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	 })();
+	
+	</script>
+    </body>
+</html>

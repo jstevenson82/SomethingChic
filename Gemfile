@@ -9,7 +9,7 @@ gem 'rails', '3.0.5'
 gem 'mysql2', '< 0.3'
 gem 'authlogic'
 
-
+gem 'simple_captcha', :git => 'git://github.com/galetahub/simple-captcha.git'
 gem 'paperclip'
 gem 'will_paginate', '~> 3.0.beta'
 #, :git => 'http://github.com/thoughtbot/paperclip.git'

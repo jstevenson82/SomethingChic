@@ -16,6 +16,7 @@ class BlogsController < ApplicationController
   # GET /blogs/1.xml
   def show
     @blog = Blog.find(params[:id])
+    @blog_category = BlogCategory.find(@blog.category_id)
     @comments = Comment.find(:all, :conditions => ["blog_id=?", @blog.id ])
     @comments = @comments.paginate(:page => params[:page], :per_page => 4)
     @comment = Comment.new

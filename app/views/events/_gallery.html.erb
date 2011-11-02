@@ -1,0 +1,11 @@
+<div id="gallery-container">
+	<div class="gallery clearfix">
+		<% @galleries.each do |gallery| %>
+			<div class="gallery-img">
+				<div class="left"><img src="<%= gallery.photo.url(:thumb) %>" width="175" height="175" alt="<%= gallery.title %>" /></div>
+				<div class="clear"></div>
+			</div>
+		<% end %>
+	</div>
+	<div class="clear">Go to: <a href="/galleries/<%= @event.gallery_section_id %>/<%= get_gallery_section :category_id => @event.gallery_section_id %>-index.html"><%= get_gallery_section :category_id => @event.gallery_section_id %></a></div>
+</div>

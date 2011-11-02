@@ -2,14 +2,14 @@
 
 	<% @blogs.each do |blog| %>
 		<% @comment = Comment.find(:all, :conditions => [ "blog_id=?", blog.id ]) %>
-
+		<div class="clear marb20">
 		<div id="blog-header">
 			<div class="blog-date">
 			  <div class='blog-month'><%= blog.created_at.strftime("%b") %></div>
 			  <div class='blog-day'><%= blog.created_at.strftime("%e") %></div>
 		  	</div>
 		  	<div class="left">
-		  		<%= link_to truncate( blog.title, :length => 37), blog, :class => "blog-title" %>
+		  		<%= link_to truncate( blog.title, :length => 37), blog_view_path(blog, :title => blog.title.gsub(/\s/,"-").gsub("\"","")), :class => "blog-title" %>
 		  		<% if @comment.count > 0 %>
 		  			<span class="comment-count"><%= @comment.count %> commet<% if !@comment.count.equal? 1 %>s<% end %></span>
 		  		<% end %>
@@ -23,9 +23,12 @@
 		
 		<div id="blog-body">
 		  <%= truncate( blog.body.gsub(/<.*?>/, "") , :length => 250 ) %>
-		  <%= link_to "read more", blog %>
+		  <%= link_to "read more", blog %><br/>
+		  <% @blog_category = BlogCategory.find(blog.category_id)%>
+	  <strong>Located in</strong>&nbsp;<%= link_to @blog_category.title, blogs_by_name_path(blog.category_id, :title => @blog_category.title.gsub(/\s/,"-").gsub("\"","")) %>
 		</div>
-
+		<div class="clear"></div>
+	</div>
 	<% end %>
 
 </div>

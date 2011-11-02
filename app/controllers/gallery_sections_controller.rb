@@ -1,6 +1,6 @@
 class GallerySectionsController < ApplicationController
 
-  layout "gallery"
+  layout "galleries"
 
   def index
     @gallery_sections = GallerySection.all

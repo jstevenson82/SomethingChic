@@ -1,0 +1,26 @@
+<div id="main">
+		   	
+	<ul class="gallery clearfix">
+	<% @events.each do |event| %>
+		<li class="marb10 clear">
+			<div class="left"><img src="<%= event.price %>" width="175" height="175" /></div>
+			<div id="info">
+				<%= link_to event.title, event_view_path(event.id, :title => event.title.gsub(/\s/,"-").gsub("\"","")) %>
+				<p><%= event.description %></p>
+			</div>
+			<div class="clear"></div>
+		</li>
+	<% end %>
+	<% if (@events.blank?) %>
+		<div class="left clear mar10">
+		  No events have been added yet.
+		</div>
+	<% end %>
+		
+	</ul>
+			
+</div>
+	
+<div id="paginate-style">
+	<%= will_paginate @events %>
+</div>

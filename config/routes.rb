@@ -1,21 +1,25 @@
 Somethingchic::Application.routes.draw do
 
-  resources :gallery_sections
-
-  resources :blogs, :comments, :users, :user_sessions, :homes, :galleries, :request_information, :users, :user_sessions
+  resources :blogs, :comments, :users, :user_sessions, :homes, :galleries, :request_information, :users, :user_sessions, :gallery_sections, :services, :events
   
   root :to => 'homes#index'
   
   match 'create_comment/:id' => 'blogs#create_comment', :as => :comment_create
   match 'comments/:id/new_comment' => 'comments#new_comment', :as => :comment
-  match 'blogs/:id/show' => 'blogs#show', :as => :blog_view
+  match 'blogs/:id/show-:title.html' => 'blogs#show', :as => :blog_view
   match 'blogs' => 'blogs#index', :as => :blog_home
-  match 'galleries/:id/index' => 'galleries#index', :as => :gallery_view
+  match 'events/:id/show-:title.html' => 'events#show', :as => :event_view
+  match 'events' => 'events#index', :as => :event_home
+  #match 'services/:id/show-:title.html' => 'services#show', :as => :service_view
+  match 'services' => 'services#index', :as => :service_home
+  match 'blog_categories/:id/:title-index.html' => 'blog_categories#show', :as => :blogs_by_name
+  match 'galleries/:id/:title-index.html' => 'galleries#index', :as => :gallery_view
   match 'gallery_sections' => 'gallery_sections#index', :as => :gallery_section_index
-  match 'galleries/:id' => 'galleries#show', :as => :picture_view
+  match 'galleries/:id/:title-view.html' => 'galleries#show', :as => :picture_view
   match 'create_gallery_comment/:id' => 'galleries#create_comment', :as => :picture_comment
   match 'home' => 'homes#index', :as => :home
-  
+  match 'comment_create_events' => 'events#create_comment', :as => :comment_create_events
+    
   match 'request_information' => 'request_information#index', :as => :request 
   match 'sendmail' => 'request_information#sendmail'
 
@@ -47,6 +51,27 @@ Somethingchic::Application.routes.draw do
   match '/manager/:id/edit_gallery_sections' => 'manager#edit_gallery_sections', :as => :manager_edit_gallery_sections
   match '/manager/new_gallery_sections' => 'manager#new_gallery_sections', :as => :manager_new_gallery_sections
   match '/manager/:id/destroy_gallery_sections' => 'manager#destroy_gallery_sections', :as => :manager_destroy_gallery_sections
+  
+  match '/manager/index_blog_categories' => 'manager#index_blog_categories', :as => :manager_index_blog_categories
+  match '/manager/:id/update_blog_categories' => 'manager#update_blog_categories', :as => :manager_update_blog_categories
+  match '/manager/create_blog_categories' => 'manager#create_blog_categories', :as => :manager_create_blog_categories
+  match '/manager/:id/edit_blog_categories' => 'manager#edit_blog_categories', :as => :manager_edit_blog_categories
+  match '/manager/new_blog_categories' => 'manager#new_blog_categories', :as => :manager_new_blog_categories
+  match '/manager/:id/destroy_blog_categories' => 'manager#destroy_blog_categories', :as => :manager_destroy_blog_categories
+  
+  match '/manager/index_events' => 'manager#index_events', :as => :manager_index_events
+  match '/manager/:id/update_events' => 'manager#update_events', :as => :manager_update_events
+  match '/manager/create_events' => 'manager#create_events', :as => :manager_create_events
+  match '/manager/:id/edit_events' => 'manager#edit_events', :as => :manager_edit_events
+  match '/manager/new_events' => 'manager#new_events', :as => :manager_new_events
+  match '/manager/:id/destroy_events' => 'manager#destroy_events', :as => :manager_destroy_events
+  
+  match '/manager/index_services' => 'manager#index_services', :as => :manager_index_services
+  match '/manager/:id/update_services' => 'manager#update_services', :as => :manager_update_services
+  match '/manager/create_services' => 'manager#create_services', :as => :manager_create_services
+  match '/manager/:id/edit_services' => 'manager#edit_services', :as => :manager_edit_services
+  match '/manager/new_services' => 'manager#new_services', :as => :manager_new_services
+  match '/manager/:id/destroy_services' => 'manager#destroy_services', :as => :manager_destroy_services
   
   match 'login' => 'user_sessions#new', :as => :login
   match 'logout' => 'user_sessions#destroy', :as => :logout

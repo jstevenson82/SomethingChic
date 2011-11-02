@@ -1,0 +1,22 @@
+<div id="services-index">
+
+	<div class="left clear mar10">	
+		<% @services.each do |service| %>
+		  <div class="left clear marb20">
+		  	<div class="left"><img src="<%= service.image_url %>"></div>
+		  	<div class="left">
+			    <div class="title"><%= service.title %></div>
+			    <div class="desc"><%= service.description %></div>
+			    <div class="price"><%= service.price %></div>
+		    </div>
+		  </div>
+		<% end %>
+		<% if (@services.blank?) %>
+			<div class="left clear mar10">
+			  No services have been added yet.
+			</div>
+		<% end %>
+
+	</div>
+
+</div>

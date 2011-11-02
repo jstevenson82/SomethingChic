@@ -5,7 +5,7 @@
 		<li class="marb10 clear">
 			<div class="left"><img src="<%= gallery.photo.url(:thumb) %>" width="175" height="175" /></div>
 			<div id="info">
-				<%= link_to gallery.title, gallery_view_path(gallery.id) %>
+				<%= link_to gallery.title, gallery_view_path(gallery.id, :title => gallery.title.gsub(/\s/,"-").gsub("\"","")) %>
 				<p><%= gallery.body %></p>
 				<p><strong>(<%= Gallery.count(:all, :conditions =>"gallery_id=#{gallery.id}") %>)</strong> number of photo's in gallery</p>
 			</div>

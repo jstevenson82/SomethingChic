@@ -1,18 +1,26 @@
 <h1>Manage Blogs</h1>
+<div class="left clear marb20"><%= link_to "Create a new blog", manager_new_blog_path %></div>
 
-<ul>
-	
+<table cellspacing="10" width="700px">
+  <tr>
+    <th>Title</th>
+    <th>Date Posted</th>
+    <th>Blog Category</th>
+    <th></th>
+    <th></th>
+  </tr>
 	<% @blogs.each do |blog| %>
-	
-		<li>
-			<%= link_to blog.title, manager_edit_blog_path(blog.id) %><br/>
-			<p><%= blog.body.gsub(/<.*?>/, "") %></p>
-		</li>
-		
+	  <tr>
+	    <td><%= blog.title %></td>
+	    <td><%= blog.created_at.strftime("%B %d, %Y") %></td>
+	    <td><%= get_blog_category :blog_category_id => blog.category_id %></td>
+	    <td><%= link_to "Edit", manager_edit_blog_path(blog.id) %></td>
+	    <td><%= link_to "Delete", manager_destroy_blog_path(blog.id) %></td>
+	  </tr>			
 	<% end %>
-	<li><%= link_to "Create a new blog", manager_new_blog_path %></li>
-</ul>
+</table>
+
 <div id="paginate-style">
 	<%= will_paginate @blogs %>
 </div>
-<div class=" class="clear""></div>
+<div class="clear"></div>

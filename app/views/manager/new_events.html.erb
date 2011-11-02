@@ -1,0 +1,69 @@
+<script type="text/javascript">
+$(document).ready(function() { 
+    $("#image").change(function() { 
+        var src = $(this).val(); 
+ 
+        $("#imagePreview").html(src ? "<img src='" + src + "'>" : ""); 
+    }); 
+}); 
+</script>
+
+<h1>New event</h1>
+
+<%= form_for @event, :url => manager_create_events_path do |f| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% @event.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :size => "80x40" %>
+  </div>
+  <div class="field">
+    <%= f.label "Select event image" %><br />
+    <select name="event[price]" id="image">
+  		<option value="">-- Select Image --</option>
+  		<% @galleries.each do |gallery| %>
+			<option value="<%= gallery.photo.url(:thumb) %>"><%= gallery.title %></option>
+		<% end %>
+	</select>
+  </div>
+  <div id="imagePreview"> 
+  	displays image here 
+  </div> 
+  <div class="field">
+    <%= f.label "Select blog category" %><br />
+    <select name="event[blog_category_id]">
+  		<option value="">-- Select Blog Category --</option>
+		<% @blog_categories.each do |bc| %>
+			<option value="<%= bc.id %>"><%= bc.title %></option>
+		<% end %>
+	</select>
+  </div>
+  <div class="field">
+    <%= f.label "Select gallery section" %><br />
+    <select name="event[gallery_section_id]">
+  		<option value="">-- Select Gallery Section --</option>
+  		<% @gallery_sections.each do |gs| %>
+			<option value="<%= gs.id %>"><%= gs.title %></option>
+		<% end %>
+	</select>
+  </div>
+  <div class="actions">
+    <%= f.submit "Create Event" %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', manager_index_events_path %>

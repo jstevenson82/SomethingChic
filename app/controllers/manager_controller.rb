@@ -2,7 +2,7 @@ class ManagerController < ApplicationController
 
   def index_home
     @homes = Home.all
-    @homes = @homes.paginate(:page => params[:page], :per_page => 5)
+    @homes = @homes.paginate(:page => params[:page], :per_page => 10)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -59,7 +59,7 @@ class ManagerController < ApplicationController
   
   def index_blog
     @blogs = Blog.all
-    @blogs = @blogs.paginate(:page => params[:page], :per_page => 5)
+    @blogs = @blogs.paginate(:page => params[:page], :per_page => 10)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -68,6 +68,7 @@ class ManagerController < ApplicationController
 
   def new_blog
     @blog = Blog.new
+    @blog_categories = BlogCategory.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -76,6 +77,7 @@ class ManagerController < ApplicationController
 
   def edit_blog
     @blog = Blog.find(params[:id])
+    @blog_categories = BlogCategory.all
   end
 
   def create_blog
@@ -119,8 +121,8 @@ class ManagerController < ApplicationController
   #*******************
 
   def index_gallery
-    @galleries = Gallery.all
-    @galleries = @galleries.paginate(:page => params[:page], :per_page => 5)
+    @galleries = Gallery.find(:all, :order => "created_at desc")
+    @galleries = @galleries.paginate(:page => params[:page], :per_page => 30)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -143,6 +145,7 @@ class ManagerController < ApplicationController
 
   def create_gallery
     @gallery = Gallery.new(params[:gallery])
+    @gallery_sections = GallerySection.all
 
     respond_to do |format|
       if @gallery.save 
@@ -156,6 +159,7 @@ class ManagerController < ApplicationController
 
   def update_gallery
     @gallery = Gallery.find(params[:id])
+    @gallery_sections = GallerySection.all
 
     respond_to do |format|
       if @gallery.update_attributes(params[:gallery])
@@ -237,4 +241,195 @@ class ManagerController < ApplicationController
     end
   end
   
+  #*******************
+  #* Blog Categories *
+  #*******************
+
+  def index_blog_categories
+    @blog_categories = BlogCategory.all
+    @blog_categories = @blog_categories.paginate(:page => params[:page], :per_page => 10)
+
+    respond_to do |format|
+      format.html # index.html.erb
+    end
+  end
+
+  def new_blog_categories
+    @blog_category = BlogCategory.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+    end
+  end
+
+  def edit_blog_categories
+    @blog_category = BlogCategory.find(params[:id])
+  end
+
+  def create_blog_categories
+    @blog_category = BlogCategory.new(params[:blog_category])
+
+    respond_to do |format|
+      if @blog_category.save
+      	format.html { redirect_to(:manager_index_blog_categories, :notice => 'Blog category was successfully created.') }
+      else
+      	format.html { render :action => "new_blog_categories" }
+      end
+    end
+  end
+
+  def update_blog_categories
+    @blog_category = BlogCategory.find(params[:id])
+
+    respond_to do |format|
+      if @blog_category.update_attributes(params[:blog_category])
+      	format.html { redirect_to(:manager_index_blog_categories, :notice => 'Blog category was successfully updated.') }
+      else
+        format.html { render :action => "edit_blog_categories" }
+        flash[:notice] = 'Blog category was successfully deleted.'
+      end
+    end
+  end
+
+  def destroy_blog_categories
+    @blog_category = BlogCategory.find(params[:id])
+    @blog_category.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(:manager_index_blog_categories) }
+      flash[:notice] = 'Blog category was successfully deleted.'
+    end
+  end
+  
+  #*******************
+  #**** Services *****
+  #*******************
+ 
+  def index_services
+    @services = Service.all
+    @services = @services.paginate(:page => params[:page], :per_page => 10)
+
+    respond_to do |format|
+      format.html # index.html.erb
+    end
+  end
+  
+  def new_services
+    @service = Service.new
+    @galleries = Gallery.find(:all, :order => "gallery_id desc")
+
+    respond_to do |format|
+      format.html # new.html.erb
+    end
+  end
+
+  def edit_services
+    @service = Service.find(params[:id])
+    @galleries = Gallery.find(:all, :order => "gallery_id desc")
+  end
+
+  def create_services
+    @service = Service.new(params[:service])
+    @galleries = Gallery.find(:all, :order => "gallery_id desc")
+
+    respond_to do |format|
+      if @service.save
+      	format.html { redirect_to(:manager_index_services, :notice => 'Service was successfully added.') }
+      else
+      	format.html { render :action => "new_services" }
+      end
+    end
+  end
+
+  def update_services
+    @service = Service.find(params[:id])
+
+    respond_to do |format|
+      if @service.update_attributes(params[:service])
+        format.html { redirect_to(:manager_index_services, :notice => 'Service was successfully updated.') }
+      else
+        format.html { render :action => "edit_services" }
+        flash[:notice] = 'Service was successfully deleted.'
+      end
+    end
+  end
+
+  def destroy_services
+    @service = Service.find(params[:id])
+    @service.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(:manager_index_services) }
+      flash[:notice] = 'Service was successfully deleted.'
+    end
+  end
+    
+  #*******************
+  #***** Events ******
+  #*******************
+ 
+  def index_events
+    @events = Event.all
+    @events = @events.paginate(:page => params[:page], :per_page => 10)
+
+    respond_to do |format|
+      format.html # index.html.erb
+    end
+  end
+  
+  def new_events
+    @event = Event.new
+    @gallery_sections = GallerySection.all
+    @blog_categories = BlogCategory.all
+    @galleries = Gallery.find(:all, :order => "gallery_id desc")
+
+    respond_to do |format|
+      format.html # new.html.erb
+    end
+  end
+
+  def edit_events
+    @event = Event.find(params[:id])
+    @gallery_sections = GallerySection.all
+    @blog_categories = BlogCategory.all
+    @galleries = Gallery.find(:all, :order => "gallery_id desc")
+  end
+
+  def create_events
+    @event = Event.new(params[:event])
+    @gallery_sections = GallerySection.all
+    @blog_categories = BlogCategory.all
+    @galleries = Gallery.find(:all, :order => "gallery_id desc")
+
+    respond_to do |format|
+      if @event.save
+      	format.html { redirect_to(:manager_index_events, :notice => 'Event was successfully added.') }
+      else
+      	format.html { render :action => "new_events" }
+      end
+    end
+  end
+
+  def update_events
+    @event = Event.find(params[:id])
+
+    respond_to do |format|
+      if @event.update_attributes(params[:event])
+        format.html { redirect_to(:manager_index_events, :notice => 'Event was successfully updated.') }
+      else
+        format.html { render :action => "edit_events" }
+        flash[:notice] = 'Event was successfully deleted.'
+      end
+    end
+  end
+
+  def destroy_events
+    @event = Event.find(params[:id])
+    @event.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(:manager_index_events) }
+      flash[:notice] = 'Event was successfully deleted.'
+    end
+  end
 end

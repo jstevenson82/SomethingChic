@@ -1,0 +1,31 @@
+<h1>Blog Categories</h1>
+<div class="left clear marb20"><%= link_to "New Blog category", manager_new_blog_categories_path %></div>
+
+<table cellspacing="10" width="700px">
+  <tr>
+    <th>Title</th>
+    <th>Body</th>
+    <th>Date Created</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @blog_categories.each do |blog_category| %>
+  <tr>
+    <td><%= blog_category.title %></td>
+    <td><%= truncate( blog_category.body, :length => 50) %></td>
+    <td>
+    	<%= blog_category.created_at.strftime("%B %d, %Y") %>
+    </td>
+    <td><%= link_to "Edit", manager_edit_blog_categories_path(blog_category.id) %></td>
+    <td><%= link_to "Delete", manager_destroy_blog_categories_path(blog_category.id) %></td>
+  </tr>
+<% end %>
+</table>
+
+<div id="paginate-style">
+	<%= will_paginate @blog_categories %>
+</div>
+<div class="clear"></div>
+
+

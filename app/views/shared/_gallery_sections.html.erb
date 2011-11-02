@@ -1,0 +1,11 @@
+	<div class="middle_shadow"></div>
+	     <div class="category-title">Galleries</div>
+	         <ul class="category">
+	         	
+			<%  @gallery_sections = GallerySection.find(:all)
+				@gallery_sections.each do |category| %>
+			  <li class="category"><%= link_to category.title, gallery_view_path(category.id, :title => category.title.gsub(/\s/,"-").gsub("\"","")) %></li>
+			<% end %>
+			
+	     	</ul>
+	<div class="bottom_shadow"></div>

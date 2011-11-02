@@ -1,0 +1,67 @@
+<script type="text/javascript">
+$(document).ready(function() { 
+    $("#image").change(function() { 
+        var src = $(this).val(); 
+ 
+        $("#imagePreview").html(src ? "<img src='" + src + "'>" : ""); 
+    }); 
+}); 
+</script>
+
+<h1>Edit event</h1>
+
+<%= form_for @event, :url => manager_update_events_path( @event ) do |f| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% @event.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :size => "80x40" %>
+  </div>
+  <div class="field">
+    <%= f.label "Select an image" %><br />
+    <select name="event[price]" id="image">
+  		<% @galleries.each do |gallery| %>
+			<option value="<%= gallery.photo.url(:thumb) %>"  <% if gallery.photo.url(:thumb) == @event.price %>selected<% end %>><%= gallery.title %></option>
+		<% end %>
+	</select>   
+  </div>
+  <div id="imagePreview"> 
+  	<img src="<%= @event.price %>"/>
+  </div> 
+  <div class="field">
+    <%= f.label "Select blog category" %><br />
+    <select name="event[blog_category_id]">
+  		<% @blog_categories.each do |bc| %>
+			<option value="<%= bc.id %>"  <% if bc.id == @event.gallery_section_id %>selected<% end %>><%= bc.title %></option>
+		<% end %>
+	</select> 
+  </div>
+  <div class="field">
+    <%= f.label "Select gallery section" %><br />
+    <select name="event[gallery_section_id]">
+    	<% @gallery_sections.each do |gs| %>
+			<option value="<%= gs.id %>"  <% if gs.id == @event.blog_category_id %>selected<% end %>><%= gs.title %></option>
+		<% end %>
+	</select> 
+  </div>
+  <div class="actions">
+    <%= f.submit "Update Event" %>
+  </div>
+<% end %>
+
+<%= link_to 'Delete', manager_destroy_events_path(@event) %> |
+<%= link_to 'Back', manager_index_events_path %>

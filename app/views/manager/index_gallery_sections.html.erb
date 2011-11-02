@@ -1,22 +1,24 @@
 <h1>Manage Gallery Sections</h1>
-<div id="main">
+<div class="left clear marb20"><%= link_to "Create a new gallery section", manager_new_gallery_sections_path %></div>
 		   	
-	<ul class="gallery clearfix">
+<table cellspacing="10" width="700px">
+  <tr>
+    <th>Title</th>
+    <th>Body</th>
+    <th></th>
+    <th></th>
+  </tr>
 	<% @gallery_sections.each do |gallery| %>
-		<li class="marb10 clear">
-			<div class="left"><img src="<%= gallery.photo.url(:thumb) %>" width="175" height="175" /></div>
-			<div id="info" style="width:375px;">
-				<%= link_to gallery.title, manager_edit_gallery_sections_path(gallery.id) %>
-				<p><%= gallery.body %></p>
-			</div>
-			<div class="clear"></div>
-		</li>
+		<tr>
+	    	<td><%= link_to gallery.title, gallery.photo.url(:thumb), :class =>"preview" %></td>
+	    	<td><%= gallery.body %></td>
+	    	<td><%= link_to 'Edit', manager_edit_gallery_sections_path(gallery.id) %></td>
+	    	<td><%= link_to 'Delete', manager_destroy_gallery_sections_path(gallery.id) %></td>
+	    </tr>
 	<% end %>
-		<li><%= link_to "Create a new gallery section", manager_new_gallery_sections_path %></li>
-	</ul>
-			
-</div>
+</table>
 	
 <div id="paginate-style">
 	<%= will_paginate @gallery_sections %>
 </div>
+<div class="clear"></div>

@@ -9,7 +9,7 @@ class GalleriesController < ApplicationController
     gallery_id = params[:id]
     @galleries = Gallery.find(:all, :conditions => "gallery_id=#{gallery_id}")
     @gallery_section = GallerySection.find(params[:id])
-    @galleries = @galleries.paginate(:page => params[:page], :per_page => 8)
+    @galleries = @galleries.paginate(:page => params[:page], :per_page => 16)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -36,7 +36,7 @@ class GalleriesController < ApplicationController
     gallery_id = @comment.blog_id.to_s.gsub('1212','')
 
     respond_to do |format|
-      if @comment.save
+      if @comment.save && simple_captcha_valid?
         format.html { redirect_to(picture_view_path(gallery_id), :notice => 'Comment was successfully created.') }
       else
       	@gallery = Gallery.find(params[:id])

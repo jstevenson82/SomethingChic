@@ -31,7 +31,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(params[:comment])
 
     respond_to do |format|
-      if @comment.save
+      if @comment.save && simple_captcha_valid?
         format.html { redirect_to(blog_view_path(@comment.blog_id), :notice => 'Comment was successfully created.') }
       else
         format.html { render :action => "new" }

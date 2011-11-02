@@ -1,0 +1,31 @@
+<div id="new-comments">
+	<div id="new-comments-header">
+		Post a comment
+	</div>
+	<%= form_tag comment_create_events_path, :method => :post do  %>
+
+	
+	  <div class="field">
+	    <label for="name">Name</label><br />
+	    <input type="text" name="comment[name]" id="name">
+	  </div>
+	  <div class="field">
+	    <label for="email">Email</label><br />
+	    <input type="text" name="comment[email]" id="email">
+	  </div>
+	  <div class="field">
+	    <label for="website">Website</label><br />
+	    <input type="text" name="comment[website]" id="website">
+	  </div>
+	  <div class="field">
+	    <label for="comment">Comment</label><br />
+	    <textarea name="comment[comment]" id="comment"></textarea>
+	    <p id="charlimitinfo"></p>
+	  </div>
+	  <input type="hidden" name="comment[blog_id]" value="<%= @event.id %>">
+	  
+	  <div class="actions left clear mart10">
+	    <%= submit_tag "Post" %>
+	  </div>
+	<% end %>
+</div>

@@ -1,23 +1,16 @@
 <div id="gallery-show">
 	<div class="gallery-show-title"><%= @gallery_section.title %></div>
 		   	
-	<ul class="gallery clearfix">
+	<div class="gallery clearfix">
 	<% @galleries.each do |gallery| %>
-		<%  gallery_id = "1212" + gallery.id.to_s
-			@comment = Comment.find(:all, :conditions => [ "blog_id=?", gallery_id ]) %>
-		<li class="marb10 clear">
+		<div class="gallery-img">
 			<div class="left"><a href="<%= gallery.photo.url(:lightbox) %>" rel="prettyPhoto[gallery1]" title="<%= truncate( gallery.body, :length => 200, :omission => '... (continued)' ) %>"><img src="<%= gallery.photo.url(:thumb) %>" width="175" height="175" alt="<%= gallery.title %>" /></a></div>
-			<div id="info">
-				<%= link_to gallery.title, picture_view_path(gallery.id) %>
-				<p><%= gallery.body %></p>
-				<% if @comment.count > 0 %>
-	  				<span class="comment-count"><%= @comment.count %> commet<% if !@comment.count.equal? 1 %>s<% end %></span>
-	  			<% end %>
-			</div>
+			<!--  -->
 			<div class="clear"></div>
-		</li>
+		</div>
 	<% end %>
-	</ul>
+	</div>
+
 			
 	<script type="text/javascript" charset="utf-8">
 		$(document).ready(function(){

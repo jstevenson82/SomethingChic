@@ -1,27 +1,42 @@
+<style type="text/css">
+.gallery {
+    width: 760px;
+}
+#paginate-style {
+    width: 660px;
+}
+#main{
+	float:left;
+	clear:both;
+}
+</style>
+
 <h1>Manage Gallery Images</h1>
+<div class="left clear marb20"><%= link_to "Create a new gallery image", manager_new_gallery_path %></div>
 <div id="main">
 		   	
-	<ul class="gallery clearfix">
+<table cellspacing="10" width="700px">
+  <tr>
+    <th>Title</th>
+    <th>Section</th>
+    <th>Date Posted</th>
+    <th></th>
+    <th></th>
+  </tr>
 	<% @galleries.each do |gallery| %>
-		<%  gallery_id = "1212" + gallery.id.to_s
-			@comment = Comment.find(:all, :conditions => [ "blog_id=?", gallery_id ]) %>
-		<li class="marb10 clear">
-			<div class="left"><img src="<%= gallery.photo.url(:thumb) %>" width="175" height="175" /></div>
-			<div id="info" style="width:375px;">
-				<%= link_to gallery.title, manager_edit_gallery_path(gallery.id) %>
-				<p><%= gallery.body %></p>
-				<% if @comment.count > 0 %>
-	  				<span class="comment-count"><%= @comment.count %> commet<% if !@comment.count.equal? 1 %>s<% end %></span>
-	  			<% end %>
-			</div>
-			<div class="clear"></div>
-		</li>
+	<tr>
+    	<td><%= link_to gallery.title, gallery.photo.url(:thumb), :class =>"preview" %></td>
+    	<td><%= get_gallery_section :category_id => gallery.gallery_id %></td>
+    	<td><%= @gallery_section.created_at.strftime("%B %d, %Y") %></td>
+    	<td><%= link_to 'Edit', manager_edit_gallery_path(gallery.id) %></td>
+    	<td><%= link_to 'Delete', manager_destroy_gallery_path(gallery.id) %></td>
+    </tr>
 	<% end %>
-		<li><%= link_to "Create a new gallery image", manager_new_gallery_path %></li>
-	</ul>
+</table>
 			
 </div>
 	
 <div id="paginate-style">
 	<%= will_paginate @galleries %>
 </div>
+<div class="clear"></div>

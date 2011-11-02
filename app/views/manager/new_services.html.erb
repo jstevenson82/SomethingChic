@@ -1,0 +1,56 @@
+<script type="text/javascript">
+$(document).ready(function() { 
+    $("#image").change(function() { 
+        var src = $(this).val(); 
+ 
+        $("#imagePreview").html(src ? "<img src='" + src + "'>" : ""); 
+    }); 
+}); 
+</script>
+
+<h1>New service</h1>
+
+<%= form_for @service, :url => manager_create_services_path do |f| %>
+  <% if @service.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@service.errors.count, "error") %> prohibited this service from being saved:</h2>
+
+      <ul>
+      <% @service.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :size => "80x40" %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label "Select an image" %><br />
+  	<select name="service[image_url]" id="image">
+  		<option value="">-- Select Image --</option>
+  		<% @galleries.each do |gallery| %>
+			<option value="<%= gallery.photo.url(:thumb) %>"><%= gallery.title %></option>
+		<% end %>
+	</select>
+  </div>
+  <div id="imagePreview"> 
+  	displays image here 
+  </div> 
+  <div class="actions">
+    <%= f.submit "Add Service" %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Back', manager_index_services_path %>

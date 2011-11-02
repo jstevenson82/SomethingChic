@@ -1,0 +1,27 @@
+<div class="left clear" style="width:920px;">
+	<div class="left" style="width:500px;">
+		<div class="marb20">
+			<img src="<%= @event.price %>" class="left"/>
+			<div class="left" style="width:295px; margin-left:15px; border:1px solid #999999; background-color:#D3D1D1; padding:5px;">
+				<%= @event.description %>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<%= render 'events/blog' %>
+	</div>
+	
+	<div class="left" style="text-align:right; width:410px;">
+	  <span style="margin-bottom:20px; font-size: 27px; font-weight: normal; letter-spacing: -0.03em; line-height: 1em;font-family: 'Trebuchet MS',Arial,Helvetica,sans-serif; color:#669999;"><em><%= @event.title %></em></span>
+	  	<%= render 'events/gallery' %>
+	  	<div id="comments-header" class="marb10">
+			<button id="post-comments">Post a comment</button>
+			<div class="clear"></div>
+		</div>
+	  	<div id="add-comments" class="clear" style="display:none; text-align:left;">
+			<%= render :partial => 'events/comment_form' %>
+		</div>
+		<div id="view-comments" class="clear">
+			<%= render :partial => 'events/view_comment' %>
+		</div>
+	</div>
+</div>

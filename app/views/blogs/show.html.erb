@@ -20,7 +20,8 @@
 	<% end %>
 	
 	<div id="blog-body">
-	  <%= @blog.body.html_safe %>
+	  <%= @blog.body.html_safe %><br/>
+	  <strong>Located in</strong>&nbsp;<%= link_to @blog_category.title, blogs_by_name_path(@blog.category_id, :title => @blog_category.title.gsub(/\s/,"-").gsub("\"","")) %>
 	</div>
 
 </div>

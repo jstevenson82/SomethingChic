@@ -13,6 +13,10 @@
     </div>
   <% end %>
 
+  <div class="field pad10">
+  	<%= image_tag(@home.photo.url(:home), :width => "90%") %>
+  </div>
+
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>

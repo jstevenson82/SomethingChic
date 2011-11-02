@@ -12,6 +12,10 @@
       </ul>
     </div>
   <% end %>
+  
+  <div class="field pad10">
+  	<%= image_tag(@gallery_section.photo.url(:thumb)) %>
+  </div>
 
   <div class="field">
     <%= f.label :title %><br />

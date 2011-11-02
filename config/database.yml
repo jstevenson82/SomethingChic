@@ -9,10 +9,10 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: somethingchic_development
+  database: p2r54838_chicDB
   pool: 5
-  username: chic_admin
-  password: chic0411
+  username: root
+  password: root
   socket: /var/run/mysqld/mysqld.sock
 
 

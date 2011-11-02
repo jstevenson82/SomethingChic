@@ -1,0 +1,11 @@
+	<div class="middle_shadow"></div>
+	     <div class="category-title">A Chic Blog Categories</div>
+	         <ul class="category">
+	         	
+			<%  @blog_categories = BlogCategory.all
+				@blog_categories.each do |category| %>
+			  <li class="category"><%= link_to category.title, blogs_by_name_path(category.id, :title => category.title.gsub(/\s/,"-").gsub("\"","")) %></li>
+			<% end %>
+			
+	     	</ul>
+	<div class="bottom_shadow"></div>

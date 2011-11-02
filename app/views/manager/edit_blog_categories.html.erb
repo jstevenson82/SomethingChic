@@ -1,0 +1,31 @@
+<h1>Editing blog category</h1>
+
+<%= form_for @blog_category, :url => manager_update_blog_categories_path( @blog_category ) do |f| %>
+  <% if @blog_category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@blog_category.errors.count, "error") %> prohibited this blog_category from being saved:</h2>
+
+      <ul>
+      <% @blog_category.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br />
+    <%= f.text_area :body %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Delete', manager_destroy_blog_categories_path(@blog_category.id)%> |
+<%= link_to 'Back', manager_index_blog_categories_path %>

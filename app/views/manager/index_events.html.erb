@@ -1,0 +1,36 @@
+<style>
+	#preview img { width:100%; }
+	#preview { width:175px; }
+</style>
+
+<h1>Manage Events</h1>
+<div class="left clear marb20"><%= link_to "Add a new event", manager_new_events_path %></div>
+
+<table cellspacing="10" width="700px">
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Blog category</th>
+    <th>Gallery section</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @events.each do |event| %>
+  <tr>
+    <td><%= link_to event.title, event.price, :class =>"preview" %></td>
+    <td><%= truncate( event.description, :length => 20 ) %></td>
+    <td><%= get_blog_category :blog_category_id => event.blog_category_id %></td>
+    <td><%= get_gallery_section :category_id => event.gallery_section_id %></td>
+    <td><%= event.created_at.strftime("%B %d, %Y") %></td>
+    <td><%= link_to 'Edit', manager_edit_events_path(event.id) %></td>
+    <td><%= link_to 'Delete', manager_destroy_events_path(event.id) %></td>
+  </tr>
+<% end %>
+</table>
+
+<div id="paginate-style">
+	<%= will_paginate @events %>
+</div>
+<div class="clear"></div>

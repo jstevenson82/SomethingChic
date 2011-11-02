@@ -31,8 +31,11 @@
     <%= f.text_field :link %>
   </div>
   <div class="field">
-    <%= f.label :category_id %><br />
-    <%= f.text_field :category_id %>
+  	<select name="blog[category_id]">
+  		<% @blog_categories.each do |category| %>
+			<option value="<%= category.id %>"><%= category.title %></option>
+		<% end %>
+	</select>
   </div>
   <div class="field">
     <%= f.label :photo %><br />
